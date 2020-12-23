@@ -5,44 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8eb9a68e-d7f9-403f-b941-81f428fd16f5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2020/12/23/hello-world/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/about/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/2020/12/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/2020/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/articles/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/author/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/Java/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/gitalk.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/FlatUiCup.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/avatar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/avatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/default.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/hello.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/loading.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/police_beian.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/boot.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/color-schema.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/debouncer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/events.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/lazyload.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/leancloud.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/local-search.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/plugins.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/hint/hint.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/links/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local-search.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/Java/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/小技巧/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/xml/local-search.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/2020/12/23/hello-world/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/about/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2020/12/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/archives/2020/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/archives/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/articles/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/author/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/categories/Java/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/categories/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/gitalk.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/FlatUiCup.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/avatar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/hello.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/police_beian.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/boot.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/color-schema.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/debouncer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/events.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/lazyload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/leancloud.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/local-search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/plugins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/lib/hint/hint.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/links/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/local-search.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/tags/Java/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/tags/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/tags/小技巧/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/xml/local-search.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +121,7 @@
       <workItem from="1608516159950" duration="16140000" />
       <workItem from="1608601053829" duration="4110000" />
       <workItem from="1608609124090" duration="7797000" />
-      <workItem from="1608703283313" duration="10482000" />
+      <workItem from="1608703283313" duration="10992000" />
     </task>
     <task id="LOCAL-00001" summary="題目:有一陣列arr[10,3,12,7,15]&#10;需求: 刪除以上陣列中數字是奇數的數字&#10;例如:arr[10,3,12,7,15] 刪除後會變成 [10,12]">
       <created>1607586868728</created>
@@ -221,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608714316780</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="git hub page &#10;只用Intelli j上git hub">
+      <created>1608715035773</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1608715035773</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +251,7 @@
     <MESSAGE value="git hub page&#10;重新佈署" />
     <MESSAGE value="git hub page&#10;public page" />
     <MESSAGE value="git hub page 試營運" />
-    <option name="LAST_COMMIT_MESSAGE" value="git hub page 試營運" />
+    <MESSAGE value="git hub page &#10;只用Intelli j上git hub" />
+    <option name="LAST_COMMIT_MESSAGE" value="git hub page &#10;只用Intelli j上git hub" />
   </component>
 </project>
