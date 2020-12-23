@@ -18,8 +18,8 @@ theme: fluid  # 指定主题
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: https://seawaterfoods.github.io/
-root: /
+url: https://seawaterfoods.github.io/public
+root: /public
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
