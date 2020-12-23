@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8eb9a68e-d7f9-403f-b941-81f428fd16f5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="1lSJRPsTnlIQGYlfe7cKDa3HU1B" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showModules" value="false" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\SpringLearn\githtml\src\main" />
+      <recent name="D:\SpringLearn\githtml\src" />
+      <recent name="D:\SpringLearn\githtml" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8eb9a68e-d7f9-403f-b941-81f428fd16f5" name="Default Changelist" comment="" />
+      <created>1607584549745</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607584549745</updated>
+      <workItem from="1607584551966" duration="3041000" />
+      <workItem from="1607653234054" duration="1215000" />
+      <workItem from="1607928604854" duration="2795000" />
+      <workItem from="1607938496906" duration="1374000" />
+      <workItem from="1608016773848" duration="8826000" />
+      <workItem from="1608169948898" duration="10632000" />
+      <workItem from="1608255794513" duration="8277000" />
+      <workItem from="1608516159950" duration="16140000" />
+      <workItem from="1608601053829" duration="4110000" />
+      <workItem from="1608609124090" duration="7797000" />
+      <workItem from="1608703283313" duration="6697000" />
+    </task>
+    <task id="LOCAL-00001" summary="題目:有一陣列arr[10,3,12,7,15]&#10;需求: 刪除以上陣列中數字是奇數的數字&#10;例如:arr[10,3,12,7,15] 刪除後會變成 [10,12]">
+      <created>1607586868728</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607586868728</updated>
+    </task>
+    <task id="LOCAL-00002" summary="基礎練習與數據結構&#10;基礎:匿名內部類別&#10;數據結構:Floyd最短路徑查詢,泡沫排序,簡單直接排序,直接插入排序">
+      <created>1608025632045</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1608025632045</updated>
+    </task>
+    <task id="LOCAL-00003" summary="數據結構&#10;數據結構:堆積排序法">
+      <created>1608263773311</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1608263773312</updated>
+    </task>
+    <task id="LOCAL-00004" summary="數據結構&#10;數據結構:合併排序法">
+      <created>1608532308787</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1608532308787</updated>
+    </task>
+    <task id="LOCAL-00005" summary="數據結構&#10;數據結構:快速排序法">
+      <created>1608536469847</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1608536469847</updated>
+    </task>
+    <task id="LOCAL-00006" summary="git hub page&#10;首頁">
+      <created>1608537715049</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1608537715049</updated>
+    </task>
+    <task id="LOCAL-00007" summary="git hub page&#10;hexo blog初始化">
+      <created>1608601370664</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1608601370664</updated>
+    </task>
+    <task id="LOCAL-00008" summary="git hub page&#10;刪去舊的首頁">
+      <created>1608601708515</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1608601708515</updated>
+    </task>
+    <task id="LOCAL-00009" summary="git hub page&#10;移動hexo位置">
+      <created>1608602274111</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608602274111</updated>
+    </task>
+    <task id="LOCAL-00010" summary="git hub page&#10;重新佈署">
+      <created>1608602898004</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1608602898004</updated>
+    </task>
+    <task id="LOCAL-00011" summary="git hub page&#10;重新佈署">
+      <created>1608609237593</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1608609237593</updated>
+    </task>
+    <task id="LOCAL-00012" summary="git hub page&#10;重新佈署">
+      <created>1608710203339</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608710203339</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/themes/clexy" />
+    </ignored-roots>
+    <MESSAGE value="題目:有一陣列arr[10,3,12,7,15]&#10;需求: 刪除以上陣列中數字是奇數的數字&#10;例如:arr[10,3,12,7,15] 刪除後會變成 [10,12]" />
+    <MESSAGE value="基礎練習與數據結構&#10;基礎:匿名內部類別&#10;數據結構:Floyd最短路徑查詢,泡沫排序,簡單直接排序,直接插入排序" />
+    <MESSAGE value="數據結構&#10;數據結構:堆積排序法" />
+    <MESSAGE value="數據結構&#10;數據結構:合併排序法" />
+    <MESSAGE value="數據結構&#10;數據結構:快數排序法" />
+    <MESSAGE value="數據結構&#10;數據結構:快速排序法" />
+    <MESSAGE value="git hub page&#10;首頁" />
+    <MESSAGE value="git hub page&#10;hexo blog初始化" />
+    <MESSAGE value="git hub page&#10;刪去舊的首頁" />
+    <MESSAGE value="git hub page&#10;移動hexo位置" />
+    <MESSAGE value="git hub page&#10;重新佈署" />
+    <option name="LAST_COMMIT_MESSAGE" value="git hub page&#10;重新佈署" />
+  </component>
+</project>
