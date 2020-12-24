@@ -2,7 +2,7 @@
 title: Java:toString小技巧
 category: Java
 tags: [小技巧,Java]
-index_img: /seawaterfoods/img/tips.jpg
+index_img: /img/tips.jpg
 ---
 ![](/seawaterfoods/img/tips.jpg)
 在開發Java專案時，時常會有需要查看撈出來的資料是否正確，但因為各種原因無法在class中實作或是需要常常更新toString，這時候就可以使用匿名內部類別（Anonymous inner class）直接重新定義類別的toString，方便在console中印。
