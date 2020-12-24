@@ -5,7 +5,9 @@ layout: about
 ---
 
 ## About
-一隻嘗試codding出莎士比亞全集的猴子。
+一隻在人生道路轉換跑道，但還是夢想codding出莎士比亞全集的猴子。
+<br/>
+分享一些學習上的心得、codding的小技巧。
  <!-- more -->
 
 ### Professional Experience

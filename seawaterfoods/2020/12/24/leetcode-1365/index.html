@@ -17,7 +17,7 @@
   <meta name="description" content="程式學習日誌">
   <meta name="author" content="Joe Wu">
   <meta name="keywords" content="blog">
-  <title>Java:toString小技巧 - SeaWaterFoods</title>
+  <title>1365 How Many Numbers Are Smaller Than the Current Number - SeaWaterFoods</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Java:toString小技巧">
+            <span class="h2" id="subtitle" title="1365 How Many Numbers Are Smaller Than the Current Number">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-23 17:07" pubdate>
-        2020年12月23日 下午
+      <time datetime="2020-12-24 17:03" pubdate>
+        2020年12月24日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      252 字
+      320 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      5
        分鐘
     </span>
   
@@ -224,13 +224,12 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Java:toString小技巧</h1>
+            <h1 style="display: none">1365 How Many Numbers Are Smaller Than the Current Number</h1>
             
             <div class="markdown-body">
-              <p><img src="/seawaterfoods/img/tips.jpg" srcset="/seawaterfoods/img/loading.gif"><br>在開發Java專案時，時常會有需要查看撈出來的資料是否正確，但因為各種原因無法在class中實作或是需要常常更新toString，這時候就可以使用匿名內部類別（Anonymous inner class）直接重新定義類別的toString，方便在console中印出。</p>
+              <p><img src="/seawaterfoods/img/LeetCode/1365.jpg" srcset="/seawaterfoods/img/loading.gif"><br>給定數組nums，在每個nums[i]找出數組中比其小的數字後記錄下來，並且以數組形式return。</p>
 <a id="more"></a>
-<h2 id="範例"><a href="#範例" class="headerlink" title="範例"></a>範例</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Role</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">String</span> name;<br>    <span class="hljs-keyword">private</span> int level;<br>    <span class="hljs-keyword">private</span> int blood;<br><br>    <span class="hljs-keyword">public</span> int <span class="hljs-function"><span class="hljs-title">getBlood</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">return</span> blood;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-function"><span class="hljs-title">setBlood</span>(<span class="hljs-params">int blood</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.blood = blood;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> int <span class="hljs-function"><span class="hljs-title">getLevel</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">return</span> level;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-function"><span class="hljs-title">setLevel</span>(<span class="hljs-params">int level</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.level = level;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">String</span> <span class="hljs-function"><span class="hljs-title">getName</span>(<span class="hljs-params"></span>)</span> &#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> <span class="hljs-function"><span class="hljs-title">setName</span>(<span class="hljs-params"><span class="hljs-built_in">String</span> name</span>)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br><br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Magician</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Role</span> </span>&#123;&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SwordsMan</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Role</span> </span>&#123;&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RPGTest</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">void</span> <span class="hljs-function"><span class="hljs-title">main</span>(<span class="hljs-params"><span class="hljs-built_in">String</span>[] args</span>)</span> &#123;<br><br>        SwordsMan swordsMan = <span class="hljs-keyword">new</span> <span class="hljs-function"><span class="hljs-title">SwordsMan</span>(<span class="hljs-params"></span>)</span>&#123;<br>            <span class="hljs-meta">@Override</span><br>            <span class="hljs-keyword">public</span> <span class="hljs-built_in">String</span> <span class="hljs-function"><span class="hljs-title">toString</span>(<span class="hljs-params"></span>)</span>&#123;<br>                <span class="hljs-built_in">String</span> toString = <span class="hljs-string">&quot;Name : &quot;</span>+getName()+<span class="hljs-string">&quot;; Level : &quot;</span>+getLevel()+<span class="hljs-string">&quot;; Blood : &quot;</span>+getBlood();<br>             <span class="hljs-keyword">return</span> toString;<br>            &#125;<br>        &#125;;<br>        swordsMan.setName(<span class="hljs-string">&quot;Justin&quot;</span>);<br>        swordsMan.setLevel(<span class="hljs-number">1</span>);<br>        swordsMan.setBlood(<span class="hljs-number">200</span>);<br><br>        Magician magician = <span class="hljs-keyword">new</span> Magician();<br>        magician.setName(<span class="hljs-string">&quot;Monica&quot;</span>);<br>        magician.setLevel(<span class="hljs-number">1</span>);<br>        magician.setBlood(<span class="hljs-number">100</span>);<br><br>        System.out.println(swordsMan);<br>        System.out.println(magician);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs angular2html">Name : Justin; Level : 1; Blood : 200<br>com.joe.basic.anonymous.entry.Magician@4edde6e5<br></code></pre></td></tr></table></figure>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><br>public int[] smallerNumbersThanCurrent(int[] nums) &#123;<br>    //<span class="hljs-number">2</span> &lt;= nums.length &lt;= <span class="hljs-number">500</span><br>    //<span class="hljs-number">0</span> &lt;= nums[i] &lt;= <span class="hljs-number">100</span><br>    <br>    int[] cts = new int[<span class="hljs-number">101</span>];<br>    //因為int[]中每個數字最多為<span class="hljs-number">100</span>，所以設置一個int[<span class="hljs-number">101</span>] (cts)的數組。<br>    <br>            for (int num : nums) &#123;<br>                cts[num]++;<br>            &#125;<br>    //將nums中每個數依大小，將cts數組的特定位數++<br>    //<span class="hljs-symbol">EX</span>: if num=<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">15</span>,<span class="hljs-number">30</span> then cts[<span class="hljs-number">10</span>]++, cts[<span class="hljs-number">15</span>]++, cts[<span class="hljs-number">15</span>]++, cts[<span class="hljs-number">30</span>]++,<br>    <br>    int sum = <span class="hljs-number">0</span>;<br>    //設置sum為<span class="hljs-number">0</span><br>    <br>    for (int i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">101</span>; i++) &#123;<br>        int temp = cts[i];<br>    //暫存每個數組中的數，依前例， cts[<span class="hljs-number">10</span>]:temp=<span class="hljs-number">1</span>, cts[<span class="hljs-number">15</span>]:temp=<span class="hljs-number">2</span>, cts[<span class="hljs-number">30</span>]:temp=<span class="hljs-number">1</span><br>        cts[i] = sum;<br>        //將前面有的數相加。<br>        //<span class="hljs-symbol">EX</span>: cts[<span class="hljs-number">10</span>]=<span class="hljs-number">0</span>, cts[<span class="hljs-number">11</span>]=<span class="hljs-number">1.</span>.. cts[<span class="hljs-number">15</span>]=<span class="hljs-number">1</span> cts[<span class="hljs-number">16</span>]=<span class="hljs-number">1.</span>.. cts[<span class="hljs-number">30</span>]=<span class="hljs-number">4.</span>.cts[<span class="hljs-number">100</span>]=<span class="hljs-number">4</span><br>        sum += temp;<br>        //這裡將sum加上temp<br>    &#125;<br>    for (int i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;<br>        nums[i] = cts[nums[i]];<br>         //將數組nums[i]輸入數組cts[nums[i]]的數<br>         //<span class="hljs-symbol">EX</span>:nums[<span class="hljs-number">0</span>]=<span class="hljs-number">10</span>-&gt;cts[<span class="hljs-number">10</span>]=<span class="hljs-number">0</span>-&gt;將<span class="hljs-number">0</span>指派給nums[<span class="hljs-number">0</span>]-&gt;nums[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span><br>         //<span class="hljs-symbol">EX</span>:nums[<span class="hljs-number">1</span>]=<span class="hljs-number">15</span>-&gt;cts[<span class="hljs-number">15</span>]=<span class="hljs-number">1</span>-&gt;將<span class="hljs-number">1</span>指派給nums[<span class="hljs-number">1</span>]-&gt;nums[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span><br>         //<span class="hljs-symbol">EX</span>:nums[<span class="hljs-number">2</span>]=<span class="hljs-number">15</span>-&gt;cts[<span class="hljs-number">15</span>]=<span class="hljs-number">1</span>-&gt;將<span class="hljs-number">1</span>指派給nums[<span class="hljs-number">2</span>]-&gt;nums[<span class="hljs-number">2</span>]=<span class="hljs-number">1</span><br>         //<span class="hljs-symbol">EX</span>:nums[<span class="hljs-number">3</span>]=<span class="hljs-number">30</span>-&gt;cts[<span class="hljs-number">20</span>]=<span class="hljs-number">3</span>-&gt;將<span class="hljs-number">3</span>指派給nums[<span class="hljs-number">3</span>]-&gt;nums[<span class="hljs-number">3</span>]=<span class="hljs-number">3</span><br>    &#125;<br>    return nums;<br>&#125;<br><span class="hljs-symbol">ANS</span>:[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>
@@ -239,7 +238,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/seawaterfoods/categories/Java/">Java</a>
+                      <a class="hover-with-bg" href="/seawaterfoods/categories/LeetCode/">LeetCode</a>
                     
                   </div>
                 
@@ -247,9 +246,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/seawaterfoods/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/">小技巧</a>
-                    
                       <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/LeetCode/">LeetCode</a>
                     
                   </div>
                 
@@ -260,15 +259,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/seawaterfoods/2020/12/24/leetcode-1290/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">1290 Convert Binary Number in a Linked List to Integer</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/seawaterfoods/2020/12/24/leetcode-1290/">
+                        <span class="hidden-mobile">1290 Convert Binary Number in a Linked List to Integer</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
