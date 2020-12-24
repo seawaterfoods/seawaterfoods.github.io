@@ -781,8 +781,8 @@ tag:
     min_font: 15
     max_font: 30
     unit: px
-    start_color: "#BBBBEE"
-    end_color: "#337ab7"
+    start_color: "#9a83b9"
+    end_color: "#e4737e"
 
 
 #---------------------------
@@ -803,7 +803,7 @@ about:
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/seawaterfoods", tip: "GitHub" }
     - { class: "iconfont icon-linkedin-fill", link: "https://www.linkedin.com/in/joe-%E5%90%B3-4109041a9/", tip: "Linkedin" }
-  #  - { class: "iconfont icon-wechat-fill", qrcode: "/img/favicon.png" }
+    - { class: "iconfont icon-email-fill", link: "mailto:astray6408@gmail.com?subject=Hello from website", tip: "E-Mail" }
 
 
 #---------------------------
