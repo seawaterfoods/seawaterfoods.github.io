@@ -2,6 +2,7 @@ package com.joe.basic.anonymous.test;
 
 import com.joe.basic.anonymous.entry.Magician;
 import com.joe.basic.anonymous.entry.Role;
+import com.joe.basic.anonymous.entry.SwordsMan;
 
 public class RPGTest {
     public static void main(String[] args) {
