@@ -1,5 +1,6 @@
 ---
 title: Java:toString小技巧
+date: 2020-12-23 16:00:00
 category: Java
 tags: [小技巧,Java]
 index_img: /img/tips.jpg

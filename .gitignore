@@ -37,3 +37,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+package-lock.json
+
+yarn.lock
