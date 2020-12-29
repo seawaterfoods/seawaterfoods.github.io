@@ -83,9 +83,10 @@ git push -u origin master                                               #把本�
 </p>
 
 ```
+npm install hexo-cli -g             # 安裝Hexo Command Line Interface 命令列介面。
 npm install                         # 安裝相關套件
 ```
-
+PS: Node.js跟Git別忘了安裝。
 ### 結論
 <p>
 Hexo內建的發布功能只會將靜態網頁資料夾(public)上傳到github上，但為了在不同電腦中都可以上傳Blog所以稍微研究一下(汗)；<br/>
