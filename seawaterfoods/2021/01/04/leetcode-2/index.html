@@ -17,7 +17,7 @@
   <meta name="description" content="程式學習日誌">
   <meta name="author" content="Joe Wu">
   <meta name="keywords" content="blog">
-  <title>1365 How Many Numbers Are Smaller Than the Current Number - SeaWaterFoods</title>
+  <title>2 Add Two Numbers - SeaWaterFoods</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="1365 How Many Numbers Are Smaller Than the Current Number">
+            <span class="h2" id="subtitle" title="2 Add Two Numbers">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-12-24 17:03" pubdate>
-        2020年12月24日 下午
+      <time datetime="2021-01-04 15:14" pubdate>
+        2021年1月4日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      320 字
+      354 字
     </span>
   
 
@@ -224,12 +224,27 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">1365 How Many Numbers Are Smaller Than the Current Number</h1>
+            <h1 style="display: none">2 Add Two Numbers</h1>
             
             <div class="markdown-body">
-              <p><img src="/seawaterfoods/img/LeetCode/1365.jpg" srcset="/seawaterfoods/img/loading.gif"><br>給定數組nums，在每個nums[i]找出數組中比其小的數字後記錄下來，並且以數組形式return。</p>
+              <p><img src="/seawaterfoods/img/LeetCode/2.jpg" srcset="/seawaterfoods/img/loading.gif"><br>此題目為兩個non-empty linked lists，它們代表兩個非負整數。<br/><br>這些數字以相反的順序儲存在兩條linked list中的nodes。<br/><br>將兩個數字相加後每一位數以相反的順序儲存在新的linked lists中返回。</p>
 <a id="more"></a>
-<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs prolog"><br>public int[] smallerNumbersThanCurrent(int[] nums) &#123;<br>    //<span class="hljs-number">2</span> &lt;= nums.length &lt;= <span class="hljs-number">500</span><br>    //<span class="hljs-number">0</span> &lt;= nums[i] &lt;= <span class="hljs-number">100</span><br>    <br>    int[] cts = new int[<span class="hljs-number">101</span>];<br>    //因為int[]中每個數字最多為<span class="hljs-number">100</span>，所以設置一個int[<span class="hljs-number">101</span>] (cts)的數組。<br>    <br>            for (int num : nums) &#123;<br>                cts[num]++;<br>            &#125;<br>    //將nums中每個數依大小，將cts數組的特定位數++<br>    //<span class="hljs-symbol">EX</span>: if num=<span class="hljs-number">10</span>,<span class="hljs-number">15</span>,<span class="hljs-number">15</span>,<span class="hljs-number">30</span> then cts[<span class="hljs-number">10</span>]++, cts[<span class="hljs-number">15</span>]++, cts[<span class="hljs-number">15</span>]++, cts[<span class="hljs-number">30</span>]++,<br>    <br>    int sum = <span class="hljs-number">0</span>;<br>    //設置sum為<span class="hljs-number">0</span><br>    <br>    for (int i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">101</span>; i++) &#123;<br>        int temp = cts[i];<br>    //暫存每個數組中的數，依前例， cts[<span class="hljs-number">10</span>]:temp=<span class="hljs-number">1</span>, cts[<span class="hljs-number">15</span>]:temp=<span class="hljs-number">2</span>, cts[<span class="hljs-number">30</span>]:temp=<span class="hljs-number">1</span><br>        cts[i] = sum;<br>        //將前面有的數相加。<br>        //<span class="hljs-symbol">EX</span>: cts[<span class="hljs-number">10</span>]=<span class="hljs-number">0</span>, cts[<span class="hljs-number">11</span>]=<span class="hljs-number">1.</span>.. cts[<span class="hljs-number">15</span>]=<span class="hljs-number">1</span> cts[<span class="hljs-number">16</span>]=<span class="hljs-number">1.</span>.. cts[<span class="hljs-number">30</span>]=<span class="hljs-number">4.</span>.cts[<span class="hljs-number">100</span>]=<span class="hljs-number">4</span><br>        sum += temp;<br>        //這裡將sum加上temp<br>    &#125;<br>    for (int i = <span class="hljs-number">0</span>; i &lt; nums.length; i++) &#123;<br>        nums[i] = cts[nums[i]];<br>         //將數組nums[i]輸入數組cts[nums[i]]的數<br>         //<span class="hljs-symbol">EX</span>:nums[<span class="hljs-number">0</span>]=<span class="hljs-number">10</span>-&gt;cts[<span class="hljs-number">10</span>]=<span class="hljs-number">0</span>-&gt;將<span class="hljs-number">0</span>指派給nums[<span class="hljs-number">0</span>]-&gt;nums[<span class="hljs-number">0</span>]=<span class="hljs-number">0</span><br>         //<span class="hljs-symbol">EX</span>:nums[<span class="hljs-number">1</span>]=<span class="hljs-number">15</span>-&gt;cts[<span class="hljs-number">15</span>]=<span class="hljs-number">1</span>-&gt;將<span class="hljs-number">1</span>指派給nums[<span class="hljs-number">1</span>]-&gt;nums[<span class="hljs-number">1</span>]=<span class="hljs-number">1</span><br>         //<span class="hljs-symbol">EX</span>:nums[<span class="hljs-number">2</span>]=<span class="hljs-number">15</span>-&gt;cts[<span class="hljs-number">15</span>]=<span class="hljs-number">1</span>-&gt;將<span class="hljs-number">1</span>指派給nums[<span class="hljs-number">2</span>]-&gt;nums[<span class="hljs-number">2</span>]=<span class="hljs-number">1</span><br>         //<span class="hljs-symbol">EX</span>:nums[<span class="hljs-number">3</span>]=<span class="hljs-number">30</span>-&gt;cts[<span class="hljs-number">20</span>]=<span class="hljs-number">3</span>-&gt;將<span class="hljs-number">3</span>指派給nums[<span class="hljs-number">3</span>]-&gt;nums[<span class="hljs-number">3</span>]=<span class="hljs-number">3</span><br>    &#125;<br>    return nums;<br>&#125;<br><span class="hljs-symbol">ANS</span>:[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>]<br></code></pre></td></tr></table></figure>
+<p>
+EX1:如圖<br/>
+{2,4,3}->342 & {5,6,4}->465<br/>
+342+465 = 807<br/>
+807 -> {7,0,8}
+</p>
+<p>
+EX2:<br/>
+{9,9,9,9,9,9,9}->9999999 & {9,9,9,9}->9999<br/>
+9999999+9999 = 10009998<br/>
+10009998 -> {8,9,9,9,0,0,0,1}
+</p>
+
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">public</span> ListNode <span class="hljs-function"><span class="hljs-title">addTwoNumbers</span>(<span class="hljs-params">ListNode l1, ListNode l2</span>)</span> &#123;<br>        ListNode output = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);<br>        output.val = <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-comment">//因為ListNode是Linked list所以必須利用java的參考(將物件的記憶體位址設定給參考名稱)refoutput將參考output</span><br>        ListNode refoutput = output;<br>        <br>        <span class="hljs-keyword">while</span>(l1!=<span class="hljs-literal">null</span> || l2!=<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-comment">//將l1&amp;l2非null的值加到refoutput值中</span><br>            <span class="hljs-keyword">if</span>(l1!= <span class="hljs-literal">null</span>)<br>                refoutput.val+=l1.val;<br>            <span class="hljs-keyword">if</span>(l2!=<span class="hljs-literal">null</span>)<br>                refoutput.val+=l2.val;<br>            <br>            <span class="hljs-comment">//如果有進位，則建立值為1的下一個node</span><br>            <span class="hljs-keyword">if</span>(refoutput.val&gt;=<span class="hljs-number">10</span>)&#123;<br>                refoutput.val-=<span class="hljs-number">10</span>;<br>                ListNode nextrefoutput = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">1</span>);<br>                refoutput.next = nextrefoutput;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">//如果沒有進位，則建立值為0的下一個node</span><br>                ListNode nextrefoutput = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);<br>                refoutput.next = nextrefoutput;<br>            &#125;<br>            <span class="hljs-comment">//查看l1&amp;l2是否為null，若非null則將l1.next或l2.next指派到當前node</span><br>            <span class="hljs-keyword">if</span>(l1!= <span class="hljs-literal">null</span>)<br>                l1=l1.next;<br>            <span class="hljs-keyword">if</span>(l2!=<span class="hljs-literal">null</span>)<br>                l2=l2.next;<br>            <span class="hljs-comment">//如果l1&amp;l2為null且refoutput下一個node的值為0，則將refoutput下一個node設為null</span><br>            <span class="hljs-keyword">if</span>(l1==<span class="hljs-literal">null</span> &amp;&amp; l2==<span class="hljs-literal">null</span> &amp;&amp; refoutput.next.val==<span class="hljs-number">0</span>)<br>                refoutput.next=<span class="hljs-literal">null</span>;<br>            <span class="hljs-comment">//將refoutput指派為refoutput下一個node</span><br>            refoutput=refoutput.next;<br>        &#125;<br>        <span class="hljs-comment">//因為refoutput參考output所以直接將output回傳即可。</span><br>        <span class="hljs-keyword">return</span> output;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p><img src="/seawaterfoods/img/LeetCode/2_AddTwoNumbers.png" srcset="/seawaterfoods/img/loading.gif"></p>
+
             </div>
             <hr>
             <div>
@@ -259,18 +274,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/seawaterfoods/2020/12/29/hexo-myconfig/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hexo+GitHub，快速建立靜態Blog並且帶著到處趴趴走。</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/seawaterfoods/2020/12/24/leetcode-1290/">
-                        <span class="hidden-mobile">1290 Convert Binary Number in a Linked List to Integer</span>
+                      <a href="/seawaterfoods/2020/12/29/hexo-myconfig/">
+                        <span class="hidden-mobile">Hexo+GitHub，快速建立靜態Blog並且帶著到處趴趴走。</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
