@@ -8,7 +8,7 @@ index_img: /img/LeetCode/1365.jpg
 ![](/seawaterfoods/img/LeetCode/1365.jpg)
 給定數組nums，在每個nums[i]找出數組中比其小的數字後記錄下來，並且以數組形式return。
 <!-- more -->
-```
+```java
 class Solution {
     public int[] smallerNumbersThanCurrent(int[] nums) {
         //2 <= nums.length <= 500
