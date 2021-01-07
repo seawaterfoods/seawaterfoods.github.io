@@ -6,8 +6,10 @@ tags: [基礎,Java]
 index_img: /img/interface-vs-abstract-class-java.jpg
 ---
 ![](/seawaterfoods/img/interface-vs-abstract-class-java.jpg)
-在初學java時常搞混抽象類別(Abstract Class)跟介面(Interface)，在這以簡易表格呈現方式畫出兩者之間的區別。
+
+在初學java時常搞混抽象類別(Abstract Class)跟介面(Interface)，在這以簡易表格呈現兩者之間的區別。
 <!-- more -->
+### Abstract Class vs Interface
 |  | 	抽象類別 Abstract Class | 介面 Interface |
 | :-----:| :----: | :----: |
 | 聲明                    | public abstract class XXX                 | public interface OOO      |
@@ -17,9 +19,11 @@ index_img: /img/interface-vs-abstract-class-java.jpg
 | 訪問修飾符               | 與正常class無異                             | 僅可使用public             |
 | 新增方法                | 當父類別建立新方法時，子類別無須實作父類別的新方法 | 當父類別建立新方法時，子類別一定要實作父類別的新方法 |
 | 設計理念 | 表示"is-a"的關係 | 表示"like-a"的關係 |
-###舉栗子
-1. Abstract Class
 <br/>
+
+### 舉些栗子
+
+1. Abstract Class
 
 ```
 public abstract class Role {
