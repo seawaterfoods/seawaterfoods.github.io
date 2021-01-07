@@ -23,44 +23,46 @@ EX2:<br/>
 10009998 -> {8,9,9,9,0,0,0,1}
 </p>
 
-```
-public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+```java
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode output = new ListNode(0);
         output.val = 0;
-        
+
         //因為ListNode是Linked list所以必須利用java的參考(將物件的記憶體位址設定給參考名稱)refoutput將參考output
         ListNode refoutput = output;
-        
-        while(l1!=null || l2!=null){
+
+        while (l1 != null || l2 != null) {
             //將l1&l2非null的值加到refoutput值中
-            if(l1!= null)
-                refoutput.val+=l1.val;
-            if(l2!=null)
-                refoutput.val+=l2.val;
-            
+            if (l1 != null)
+                refoutput.val += l1.val;
+            if (l2 != null)
+                refoutput.val += l2.val;
+
             //如果有進位，則建立值為1的下一個node
-            if(refoutput.val>=10){
-                refoutput.val-=10;
+            if (refoutput.val >= 10) {
+                refoutput.val -= 10;
                 ListNode nextrefoutput = new ListNode(1);
                 refoutput.next = nextrefoutput;
-            }else{
-            //如果沒有進位，則建立值為0的下一個node
+            } else {
+                //如果沒有進位，則建立值為0的下一個node
                 ListNode nextrefoutput = new ListNode(0);
                 refoutput.next = nextrefoutput;
             }
             //查看l1&l2是否為null，若非null則將l1.next或l2.next指派到當前node
-            if(l1!= null)
-                l1=l1.next;
-            if(l2!=null)
-                l2=l2.next;
+            if (l1 != null)
+                l1 = l1.next;
+            if (l2 != null)
+                l2 = l2.next;
             //如果l1&l2為null且refoutput下一個node的值為0，則將refoutput下一個node設為null
-            if(l1==null && l2==null && refoutput.next.val==0)
-                refoutput.next=null;
+            if (l1 == null && l2 == null && refoutput.next.val == 0)
+                refoutput.next = null;
             //將refoutput指派為refoutput下一個node
-            refoutput=refoutput.next;
+            refoutput = refoutput.next;
         }
         //因為refoutput參考output所以直接將output回傳即可。
         return output;
     }
+}
 ```
 ![](/seawaterfoods/img/LeetCode/2_AddTwoNumbers.png)

@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      61 字
+      65 字
     </span>
   
 
@@ -229,7 +229,8 @@
             <div class="markdown-body">
               <p><img src="/seawaterfoods/img/LeetCode/24.jpg" srcset="/seawaterfoods/img/loading.gif"><br>給定一個 linked list，每隔兩個相鄰node交換一次並返回其linked list。</p>
 <a id="more"></a>
-<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs d"><span class="hljs-keyword">public</span> ListNode swapPairs(ListNode head) &#123;<br>        ListNode <span class="hljs-keyword">body</span> = head;<br>        <span class="hljs-keyword">while</span>(<span class="hljs-keyword">body</span> != <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-keyword">body</span>.next !=<span class="hljs-literal">null</span>)&#123;<br>            <span class="hljs-keyword">int</span> temp = <span class="hljs-keyword">body</span>.val;<br>            <span class="hljs-keyword">body</span>.val = <span class="hljs-keyword">body</span>.next.val;<br>            <span class="hljs-keyword">body</span>.next.val = temp;<br>            <span class="hljs-keyword">body</span> = <span class="hljs-keyword">body</span>.next.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;<br>        ListNode body = head;<br>        <span class="hljs-keyword">while</span> (body != <span class="hljs-keyword">null</span> &amp;&amp; body.next != <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-keyword">int</span> temp = body.val;<br>            body.val = body.next.val;<br>            body.next.val = temp;<br>            body = body.next.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
             </div>
             <hr>
             <div>

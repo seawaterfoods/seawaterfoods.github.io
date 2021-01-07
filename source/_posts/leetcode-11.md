@@ -12,27 +12,29 @@ index_img: /img/LeetCode/11.jpg
 
 ###  
 
-```
-public int maxArea(int[] height) {
-    int ans=0;
-    
-    //取最左邊的線與最右邊的線。
-    for(int left =0,right = height.length-1;left<right;){
-        int area = 0;
-        int width = right-left;
+```java
+class Solution {
+    public int maxArea(int[] height) {
+        int ans=0;
         
-        //左右邊線相互比較後，以較小邊為高再與寬相乘得面積，之後將較小邊往對邊前進一位。
-        if(height[left]>height[right]){
-            area = width*height[right];
-            right--;
-        }else{
-            area = width*height[left];
-            left++;
-        }
-        if(ans<area)
-            ans=area;
-       }
-    return ans;
+        //取最左邊的線與最右邊的線。
+        for(int left =0,right = height.length-1;left<right;){
+            int area = 0;
+            int width = right-left;
+            
+            //左右邊線相互比較後，以較小邊為高再與寬相乘得面積，之後將較小邊往對邊前進一位。
+            if(height[left]>height[right]){
+                area = width*height[right];
+                right--;
+            }else{
+                area = width*height[left];
+                left++;
+            }
+            if(ans<area)
+                ans=area;
+           }
+        return ans;
+    }
 }
 ```
 ![](/seawaterfoods/img/LeetCode/11_ContainerWithMostWater.png)

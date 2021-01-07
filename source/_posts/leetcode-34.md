@@ -13,7 +13,8 @@ index_img: /img/LeetCode/34.jpg
 後續：如果可以的話，請寫出運行時間複雜度為O（log n）的算法。
 <!-- more -->
 
-```
+```java
+class Solution {
     public int[] searchRange(int[] nums, int target) {
        if (nums.length == 0) {
             return new int[]{-1, -1};
@@ -58,4 +59,5 @@ index_img: /img/LeetCode/34.jpg
         
        return bound;
     }
+}
 ```

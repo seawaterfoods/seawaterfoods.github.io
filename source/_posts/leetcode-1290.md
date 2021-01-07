@@ -9,7 +9,8 @@ index_img: /img/LeetCode/1290.jpg
 此題目中每個ListNode中只會有0 or 1，這題要求出由01組成的二制進以右至左轉成十制進。
 <!-- more -->
 ### 以下是用while的作法
-```
+```java
+class Solution {
 public int getDecimalValue(ListNode head) {
     //設置decimal為最終回覆十制進的ANS
     int decimal = 0;
@@ -56,9 +57,10 @@ private ListNode reverse(ListNode head) {
         
         return prev;
     }
+}
 ```
 ### 以下是用遞迴的作法
-```
+```java
 class Solution {
     int i =0;
     int ans =0;

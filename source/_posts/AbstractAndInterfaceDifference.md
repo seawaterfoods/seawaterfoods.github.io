@@ -19,13 +19,12 @@ index_img: /img/interface-vs-abstract-class-java.jpg
 | 訪問修飾符               | 與正常class無異                             | 僅可使用public             |
 | 新增方法                | 當父類別建立新方法時，子類別無須實作父類別的新方法 | 當父類別建立新方法時，子類別一定要實作父類別的新方法 |
 | 設計理念 | 表示"is-a"的關係 | 表示"like-a"的關係 |
-<br/>
 
 ### 舉些栗子
 
 1. Abstract Class
 
-```
+```java
 public abstract class Role {
     private String name;
 
@@ -41,7 +40,7 @@ public abstract class Role {
 }
 ```
 
-```
+```java
 public class Magician extends Role {
     public void fight() {
         System.out.println("魔法攻擊");
@@ -49,7 +48,7 @@ public class Magician extends Role {
 }
 ```
 2. Interface
-```
+```java
 public interface Rider {
     public abstract void ride();  
 }
@@ -57,7 +56,7 @@ public interface Swimmer {
     void swim();  // 預設就是public abstract
 }
 ```
-```
+```java
 public class Traveler implements Swimmer, Rider {
 //   一定要將interface中的方法實做出來，不然會編譯失敗
     @Override
@@ -71,7 +70,7 @@ public class Traveler implements Swimmer, Rider {
 }
 ```
 當然可以同時應用抽象類別跟介面。
-```
+```java
 public class SwordsMan extends Role implements Swimmer, Rider {
     @Override
     public void fight() {
@@ -87,7 +86,7 @@ public class SwordsMan extends Role implements Swimmer, Rider {
     }
 }
 ```
-```
+```java
 public class RPGTest {
     public static void main(String[] args) {
 
@@ -98,7 +97,6 @@ public class RPGTest {
         swordsMan.fight();
         swordsMan.ride();
         swordsMan.swim();
-        
     }
 }
 ```

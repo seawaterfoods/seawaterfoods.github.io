@@ -20,11 +20,11 @@ index_img: /img/hexo-cover.png
 > 安裝好兩個必要軟體後就可以直接使用NPM來安裝Hexo。
 
 **1. 安裝 Hexo**
-```
+```shell
 npm install hexo-cli -g
 ```
 如果安裝完成便可以直接輸入指令來查詢Hexo版本
-```
+```shell
 hexo version
 ```
 **2. 初始化Blog**
@@ -48,7 +48,7 @@ npm install                         # 安裝相關套件
 也可以順便建立Blog的404頁面。
 </p>
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -68,7 +68,7 @@ npm install                         # 安裝相關套件
 <br/>
 **PS:需配置好認證祕鑰–保證本地和遠端建立安全連線。**
 
-```
+```shell
 git init                                                                #建立數據庫
 git add *                                                               #把資料夾內所有檔案列為tracked對象
 git commit -m 'hexo'                                                    #提交版本
@@ -82,7 +82,7 @@ git push -u origin master                                               #把本�
 在其他電腦下載好自己的Hexo Blog專案後，在專案資料夾直接安裝npm套件即可使用hexo。
 </p>
 
-```
+```shell
 npm install hexo-cli -g             # 安裝Hexo Command Line Interface 命令列介面。
 npm install                         # 安裝相關套件
 ```

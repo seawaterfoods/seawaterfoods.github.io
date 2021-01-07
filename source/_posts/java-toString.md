@@ -9,7 +9,7 @@ index_img: /img/tips.jpg
 在開發Java專案時，時常會有需要查看撈出來的資料是否正確，但因為各種原因無法在class中實作或是需要常常更新toString，這時候就可以使用匿名內部類別（Anonymous inner class）直接重新定義類別的toString，方便在console中印出。
 <!-- more -->
 ## 範例 ##
-```
+```java
 public abstract class Role {
     private String name;
     private int level;
@@ -68,7 +68,7 @@ public class RPGTest {
 ```
 
 ### 結果
-```angular2html
+```
 Name : Justin; Level : 1; Blood : 200
 com.joe.basic.anonymous.entry.Magician@4edde6e5
 ```

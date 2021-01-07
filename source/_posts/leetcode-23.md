@@ -9,7 +9,7 @@ index_img: /img/LeetCode/23.jpg
 給一個由k個linked-lists組成的數組，每個linked-lists以升序排列。 將所有linked-lists合併到一個排序的linked-lists中後回傳。
 <!-- more -->
 
-```
+```java
 /**
  * Definition for singly-linked list.
  * public class ListNode {
