@@ -6,6 +6,8 @@ tags: [LeetCode,Java]
 index_img: /img/LeetCode/2.jpg
 ---
 ![](/seawaterfoods/img/LeetCode/2.jpg)
+
+### 題目 2: Add Two Numbers
 此題目為兩個non-empty linked lists，它們代表兩個非負整數。<br/>
 這些數字以相反的順序儲存在兩條linked list中的nodes。<br/>
 將兩個數字相加後每一位數以相反的順序儲存在新的linked lists中返回。

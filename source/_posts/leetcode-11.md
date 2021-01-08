@@ -6,11 +6,10 @@ tags: [LeetCode,Java]
 index_img: /img/LeetCode/11.jpg
 ---
 ![](/seawaterfoods/img/LeetCode/11.jpg)
+### 題目 11: Container With Most Water
 給定n個非負整數a1, a2, ..., an，其中每個代表坐標(i, ai)上的一個點。 繪製n條垂直線，使線i的兩個端點位於 (i, ai) 和 (i, 0)。 <br/>
 找兩條線，它們與x軸一起形成一個容器，以便該容器包含最多的水。
 <!-- more -->
-
-###  
 
 ```java
 class Solution {

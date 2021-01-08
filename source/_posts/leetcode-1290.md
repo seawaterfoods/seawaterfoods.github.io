@@ -6,6 +6,7 @@ tags: [LeetCode,Java]
 index_img: /img/LeetCode/1290.jpg
 ---
 ![](/seawaterfoods/img/LeetCode/1290.jpg)
+### 題目 1290: Convert Binary Number in a Linked List to Integer
 此題目中每個ListNode中只會有0 or 1，這題要求出由01組成的二制進以右至左轉成十制進。
 <!-- more -->
 ### 以下是用while的作法

@@ -6,6 +6,7 @@ tags: [LeetCode,Java]
 index_img: /img/LeetCode/24.jpg
 ---
 ![](/seawaterfoods/img/LeetCode/24.jpg)
+### 題目 24: Swap Nodes in Pairs
 給定一個 linked list，每隔兩個相鄰node交換一次並返回其linked list。
 <!-- more -->
 

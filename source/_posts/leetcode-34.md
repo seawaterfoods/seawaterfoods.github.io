@@ -6,6 +6,7 @@ tags: [LeetCode,Java]
 index_img: /img/LeetCode/34.jpg
 ---
 ![](/seawaterfoods/img/LeetCode/34.jpg)
+### 題目 34: Find First and Last Position of Element in Sorted Array
 給定一個以升序排列的整數nums數組，找到給定目標值的開始和結束位置。
 
 如果在數組中未找到目標，則返回[-1，-1]。

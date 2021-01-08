@@ -6,6 +6,7 @@ tags: [LeetCode,Java]
 index_img: /img/LeetCode/23.jpg
 ---
 ![](/seawaterfoods/img/LeetCode/23.jpg)
+### 題目 23: Merge k Sorted Lists
 給一個由k個linked-lists組成的數組，每個linked-lists以升序排列。 將所有linked-lists合併到一個排序的linked-lists中後回傳。
 <!-- more -->
 
