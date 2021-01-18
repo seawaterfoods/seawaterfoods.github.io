@@ -19,7 +19,7 @@ class Solution {
         for (int i = 0; i < 9; i++) {
 //            檢查Row
             if (!validateRow(board, i)) return false;
-//            檢查Row
+//            檢查Col
             if (!validateCol(board, i)) return false;
         }
 
