@@ -8,12 +8,9 @@ index_img: /img/JUnit/JUnit5.png
 ![](/seawaterfoods/img/JUnit/JUnit5.png)
 
 ## 前言
-寫測試(Testing)在開發程式中一直是非常重要的一環，測試主要是驗證程式的正確性、完整性、安全性等等許多品質最簡單的方式
-，畢竟總不可能為了測試後端程式邏輯修改後，在前端呈現是否正確而不斷重新編譯後重啟伺服器來驗證；
-在Java中JUnit是最為常用的測試框架，
-它可以做單元測試(Unit Testing)、整合測試(Integrated Testing)、系統測試(System Testing)
-、壓力測試(Stress Testing)、使用者接受度測試 (User Acceptance Testing) ...等等
-；而這系列文章主要是學習JUnit於2017年9月發布的JUnit5，從單元測試開始學習如何寫測試。
+寫測試(Testing)在開發程式中一直是非常重要的一環，測試主要是驗證程式的正確性、完整性、安全性等等許多品質最簡單的方式 ，畢竟總不可能為了測試後端程式邏輯修改後，在前端呈現是否正確而不斷重新編譯後重啟伺服器來驗證； 
+在Java中JUnit是最為常用的測試框架，它可以做單元測試(Unit Testing)、整合測試(Integrated Testing)、系統測試(System Testing)、壓力測試(Stress Testing)、使用者接受度測試 (User Acceptance Testing) ...等等；
+而這系列文章主要是學習JUnit於2017年9月發布的JUnit5，從單元測試開始學習如何寫測試。
 <!-- more -->
 
 ## JUnit5入門準備
@@ -89,3 +86,5 @@ public class FirstTest {
 ![](/seawaterfoods/img/JUnit/FirstResult.png)
 Run可查看所有結果。
 
+### 參考資料
+[第一天 JUnit入門](https://ithelp.ithome.com.tw/articles/10192367, "JUnit4-1")<br/>
