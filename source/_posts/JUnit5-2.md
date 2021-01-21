@@ -1,5 +1,5 @@
 ---
-title: JUnit5入門(二)
+title: JUnit5入門(二)-時序Annotations
 date: 2021-01-19 11:15:53
 category: LeetCode
 tags: [JUnit5,Java]
@@ -71,6 +71,6 @@ JUnit5|JUnit4
 ![](/seawaterfoods/img/JUnit/JUnit5SequenceFlowChart.png)|![](/seawaterfoods/img/JUnit/JUnit4SequenceFlowChart.png)
 
 
-### 參考資料
+## 參考資料
 >[junit5官方網站](https://junit.org/junit5/docs/current/user-guide/#writing-tests, "junit5")<br/>
 [第二天 JUnit生命週期/執行順序](https://ithelp.ithome.com.tw/articles/10192896, "JUnit4-2")<br/>

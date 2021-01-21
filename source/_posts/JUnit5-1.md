@@ -1,5 +1,5 @@
 ---
-title: JUnit5入門(一)
+title: JUnit5入門(一)-前言
 date: 2021-01-18 10:56:50
 category: LeetCode
 tags: [JUnit5,Java]
@@ -86,5 +86,5 @@ public class FirstTest {
 ![](/seawaterfoods/img/JUnit/FirstResult.png)
 Run可查看所有結果。
 
-### 參考資料
+## 參考資料
 [第一天 JUnit入門](https://ithelp.ithome.com.tw/articles/10192367, "JUnit4-1")<br/>
