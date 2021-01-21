@@ -2,7 +2,7 @@
 ---
 title: JUnit5入門(三)-斷言
 date: 2021-01-21 13:39:50
-category: LeetCode
+category: JUnit5
 tags: [JUnit5,Java]
 index_img: /img/JUnit/JUnit5.png
 ---
