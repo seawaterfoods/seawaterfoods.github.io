@@ -17,7 +17,7 @@
   <meta name="description" content="程式學習日誌">
   <meta name="author" content="Joe Wu">
   <meta name="keywords" content="blog">
-  <title>JUnit5入門(一)-前言 - SeaWaterFoods</title>
+  <title>2 Add Two Numbers - SeaWaterFoods</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -162,7 +162,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="JUnit5入門(一)-前言">
+            <span class="h2" id="subtitle" title="2 Add Two Numbers">
               
             </span>
 
@@ -172,8 +172,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-18 10:56" pubdate>
-        2021年1月18日 上午
+      <time datetime="2021-01-04 15:14" pubdate>
+        2021年1月4日 下午
       </time>
     </span>
   
@@ -184,7 +184,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      537 字
+      363 字
     </span>
   
 
@@ -194,7 +194,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      5
        分鐘
     </span>
   
@@ -224,43 +224,27 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">JUnit5入門(一)-前言</h1>
+            <h1 style="display: none">2 Add Two Numbers</h1>
             
             <div class="markdown-body">
-              <p><img src="/seawaterfoods/img/JUnit/JUnit5.png" srcset="/seawaterfoods/img/loading.gif"></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>寫測試(Testing)在開發程式中一直是非常重要的一環，測試主要是驗證程式的正確性、完整性、安全性等等許多品質最簡單的方式 ，畢竟總不可能為了測試後端程式邏輯修改後，在前端呈現是否正確而不斷重新編譯後重啟伺服器來驗證；<br>在Java中JUnit是最為常用的測試框架，它可以做單元測試(Unit Testing)、整合測試(Integrated Testing)、系統測試(System Testing)、壓力測試(Stress Testing)、使用者接受度測試 (User Acceptance Testing) …等等；<br>而這系列文章主要是學習JUnit於2017年9月發布的JUnit5，從單元測試開始學習如何寫測試。</p>
+              <p><img src="/seawaterfoods/img/LeetCode/2.jpg" srcset="/seawaterfoods/img/loading.gif"></p>
+<h3 id="題目-2-Add-Two-Numbers"><a href="#題目-2-Add-Two-Numbers" class="headerlink" title="題目 2: Add Two Numbers"></a>題目 2: Add Two Numbers</h3><p>此題目為兩個non-empty linked lists，它們代表兩個非負整數。<br/><br>這些數字以相反的順序儲存在兩條linked list中的nodes。<br/><br>將兩個數字相加後每一位數以相反的順序儲存在新的linked lists中返回。</p>
 <a id="more"></a>
+<p>
+EX1:如圖<br/>
+{2,4,3}->342 & {5,6,4}->465<br/>
+342+465 = 807<br/>
+807 -> {7,0,8}
+</p>
+<p>
+EX2:<br/>
+{9,9,9,9,9,9,9}->9999999 & {9,9,9,9}->9999<br/>
+9999999+9999 = 10009998<br/>
+10009998 -> {8,9,9,9,0,0,0,1}
+</p>
 
-<h2 id="JUnit5入門準備"><a href="#JUnit5入門準備" class="headerlink" title="JUnit5入門準備"></a>JUnit5入門準備</h2><ul>
-<li>版本配置<blockquote>
-<ul>
-<li>JDK版本：1.8</li>
-<li>IDE：Intellij IDEA 2020.3.2</li>
-<li>maven：3.6.2    </li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<p><img src="/seawaterfoods/img/JUnit/FolderConfiguration.png" srcset="/seawaterfoods/img/loading.gif"><br><br /></p>
-<ul>
-<li>pom.xml<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- ... --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- ... --&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.junit.jupiter<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit-jupiter-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.7.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.junit.jupiter<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>junit-jupiter-engine<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.7.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-comment">&lt;!-- ... --&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><span class="hljs-comment">&lt;!-- ... --&gt;</span><br></code></pre></td></tr></table></figure>
-<h2 id="建立測試範例"><a href="#建立測試範例" class="headerlink" title="建立測試範例"></a>建立測試範例</h2></li>
-</ul>
-<ol>
-<li>建立測試類別<br>一般而言測試檔案會建立於專案的路徑src/test/java中分門別類整理好，那我們先直接建立一個測試類別：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">firstTest</span> </span>&#123;<br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Case1</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;print Case1.&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-測試程式必須為public且測試類別路徑一般與待測類別路件相同。</li>
-</ol>
-<ul>
-<li>待測類別src/main/java：com/joe/basic/First.java</li>
-<li>測試類別src/test/java：com/joe/basic/FirstTest.java</li>
-</ul>
-<ol start="2">
-<li>加入測試案例(Test Case)<br>將@Test標註在public void方法上<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.junit.jupiter.api.Test;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FirstTest</span> </span>&#123;<br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Case1</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;print Case1.&quot;</span>);<br>    &#125;<br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Case2</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;print Case2.&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="執行測試"><a href="#執行測試" class="headerlink" title="執行測試"></a>執行測試</h2><img src="/seawaterfoods/img/JUnit/RunFirstTest.png" srcset="/seawaterfoods/img/loading.gif"><br>在Intellij中可以直接在類別上執行其中所有方法。</li>
-</ol>
-<p><img src="/seawaterfoods/img/JUnit/RunCase1.png" srcset="/seawaterfoods/img/loading.gif"><br>或是在單一案例上測試執行</p>
-<p><img src="/seawaterfoods/img/JUnit/FirstResult.png" srcset="/seawaterfoods/img/loading.gif"><br>Run可查看所有結果。</p>
-<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10192367," title="JUnit4-1">第一天 JUnit入門</a><br/></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>&#123;<br>        ListNode output = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);<br>        output.val = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-comment">//因為ListNode是Linked list所以必須利用java的參考(將物件的記憶體位址設定給參考名稱)refoutput將參考output</span><br>        ListNode refoutput = output;<br><br>        <span class="hljs-keyword">while</span> (l1 != <span class="hljs-keyword">null</span> || l2 != <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-comment">//將l1&amp;l2非null的值加到refoutput值中</span><br>            <span class="hljs-keyword">if</span> (l1 != <span class="hljs-keyword">null</span>)<br>                refoutput.val += l1.val;<br>            <span class="hljs-keyword">if</span> (l2 != <span class="hljs-keyword">null</span>)<br>                refoutput.val += l2.val;<br><br>            <span class="hljs-comment">//如果有進位，則建立值為1的下一個node</span><br>            <span class="hljs-keyword">if</span> (refoutput.val &gt;= <span class="hljs-number">10</span>) &#123;<br>                refoutput.val -= <span class="hljs-number">10</span>;<br>                ListNode nextrefoutput = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">1</span>);<br>                refoutput.next = nextrefoutput;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">//如果沒有進位，則建立值為0的下一個node</span><br>                ListNode nextrefoutput = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);<br>                refoutput.next = nextrefoutput;<br>            &#125;<br>            <span class="hljs-comment">//查看l1&amp;l2是否為null，若非null則將l1.next或l2.next指派到當前node</span><br>            <span class="hljs-keyword">if</span> (l1 != <span class="hljs-keyword">null</span>)<br>                l1 = l1.next;<br>            <span class="hljs-keyword">if</span> (l2 != <span class="hljs-keyword">null</span>)<br>                l2 = l2.next;<br>            <span class="hljs-comment">//如果l1&amp;l2為null且refoutput下一個node的值為0，則將refoutput下一個node設為null</span><br>            <span class="hljs-keyword">if</span> (l1 == <span class="hljs-keyword">null</span> &amp;&amp; l2 == <span class="hljs-keyword">null</span> &amp;&amp; refoutput.next.val == <span class="hljs-number">0</span>)<br>                refoutput.next = <span class="hljs-keyword">null</span>;<br>            <span class="hljs-comment">//將refoutput指派為refoutput下一個node</span><br>            refoutput = refoutput.next;<br>        &#125;<br>        <span class="hljs-comment">//因為refoutput參考output所以直接將output回傳即可。</span><br>        <span class="hljs-keyword">return</span> output;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="/seawaterfoods/img/LeetCode/2_AddTwoNumbers.png" srcset="/seawaterfoods/img/loading.gif"></p>
 
             </div>
             <hr>
@@ -280,7 +264,7 @@
                     
                       <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
                     
-                      <a class="hover-with-bg" href="/seawaterfoods/tags/JUnit5/">JUnit5</a>
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/LeetCode/">LeetCode</a>
                     
                   </div>
                 
@@ -291,9 +275,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/seawaterfoods/2021/01/19/JUnit5-2/">
+                      <a href="/seawaterfoods/2021/01/05/LeetCode-11/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JUnit5入門(二)-時序Annotations</span>
+                        <span class="hidden-mobile">11 Container With Most Water</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -301,8 +285,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/seawaterfoods/2021/01/08/LeetCode-36/">
-                        <span class="hidden-mobile">36 Valid Sudoku</span>
+                      <a href="/seawaterfoods/2020/12/29/Hexo-MyConfig/">
+                        <span class="hidden-mobile">Hexo+GitHub，快速建立靜態Blog並且帶著到處趴趴走。</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

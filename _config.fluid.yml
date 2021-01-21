@@ -358,7 +358,7 @@ scroll_top_arrow:
 footer:
   # 頁腳第一行文字的 HTML，建議保留 Fluid 的鏈接，用於向更多人推廣本主題
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
-  content: '<span>Copyright © 2014-2020 SeaWaterFoods All rights reserved. </span>
+  content: '<span>Copyright © 2020-2021 SeaWaterFoods All rights reserved. </span>
     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
     <span>主題：</span>
     <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>

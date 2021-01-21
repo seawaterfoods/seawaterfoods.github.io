@@ -17,7 +17,7 @@
   <meta name="description" content="程式學習日誌">
   <meta name="author" content="Joe Wu">
   <meta name="keywords" content="blog">
-  <title>關於 - SeaWaterFoods</title>
+  <title>11 Container With Most Water - SeaWaterFoods</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -33,6 +33,8 @@
     
   
 
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
   
 
 
@@ -61,7 +63,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -160,9 +162,46 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="關於">
+            <span class="h2" id="subtitle" title="11 Container With Most Water">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-05 11:15" pubdate>
+        2021年1月5日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      192 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分鐘
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -175,84 +214,96 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-            <div class="about-avatar">
-              <img src="/seawaterfoods/img/avatar.jpg" srcset="/seawaterfoods/img/loading.gif"
-                   class="img-fluid" alt="avatar">
-            </div>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center">
-  <div class="about-info">
-    <div class="about-name">SeaWaterFoods</div>
-    <div class="about-intro">SeaWaterFoods的程式學習日誌</div>
-    <div class="about-icons">
-      
-        
-        
-        
-        <a target="_blank" rel="noopener" href="https://github.com/seawaterfoods" class="
-           hint--bottom hint--rounded"
-           aria-label=GitHub
-        >
-          <i class="iconfont icon-github-fill" aria-hidden="true"></i>
-          
-        </a>
-      
-        
-        
-        
-        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/joe-%E5%90%B3-4109041a9/" class="
-           hint--bottom hint--rounded"
-           aria-label=Linkedin
-        >
-          <i class="iconfont icon-linkedin-fill" aria-hidden="true"></i>
-          
-        </a>
-      
-        
-        
-        
-        <a href="mailto:astray6408@gmail.com?subject=Hello from website" class="
-           hint--bottom hint--rounded"
-           aria-label=E-Mail
-        >
-          <i class="iconfont icon-email-fill" aria-hidden="true"></i>
-          
-        </a>
-      
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">11 Container With Most Water</h1>
+            
+            <div class="markdown-body">
+              <p><img src="/seawaterfoods/img/LeetCode/11.jpg" srcset="/seawaterfoods/img/loading.gif"></p>
+<h3 id="題目-11-Container-With-Most-Water"><a href="#題目-11-Container-With-Most-Water" class="headerlink" title="題目 11: Container With Most Water"></a>題目 11: Container With Most Water</h3><p>給定n個非負整數a1, a2, …, an，其中每個代表坐標(i, ai)上的一個點。 繪製n條垂直線，使線i的兩個端點位於 (i, ai) 和 (i, 0)。 <br/><br>找兩條線，它們與x軸一起形成一個容器，以便該容器包含最多的水。</p>
+<a id="more"></a>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-comment">//取最左邊的線與最右邊的線。</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> left =<span class="hljs-number">0</span>,right = height.length-<span class="hljs-number">1</span>;left&lt;right;)&#123;<br>            <span class="hljs-keyword">int</span> area = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">int</span> width = right-left;<br>            <br>            <span class="hljs-comment">//左右邊線相互比較後，以較小邊為高再與寬相乘得面積，之後將較小邊往對邊前進一位。</span><br>            <span class="hljs-keyword">if</span>(height[left]&gt;height[right])&#123;<br>                area = width*height[right];<br>                right--;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                area = width*height[left];<br>                left++;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(ans&lt;area)<br>                ans=area;<br>           &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="/seawaterfoods/img/LeetCode/11_ContainerWithMostWater.png" srcset="/seawaterfoods/img/loading.gif"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/categories/LeetCode/">LeetCode</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/LeetCode/">LeetCode</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2021/01/05/LeetCode-23/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">23 Merge k Sorted Lists</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2021/01/04/LeetCode-2/">
+                        <span class="hidden-mobile">2 Add Two Numbers</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
     </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
   </div>
 </div>
 
-<article class="mt-5 markdown-body">
-  <h2 id="About"><a href="#About" class="headerlink" title="About"></a>About</h2><p>一隻在人生道路轉換跑道，但還是夢想codding出莎士比亞全集的猴子。<br><br/><br>分享一些學習上的心得、codding的小技巧。<br> <a id="more"></a></p>
-<h3 id="Professional-Experience"><a href="#Professional-Experience" class="headerlink" title="Professional Experience"></a>Professional Experience</h3><ul>
-<li>2019/11 ~ Present  PG @精誠資訊<!-- more -->
-
-</li>
-</ul>
-<h3 id="Education"><a href="#Education" class="headerlink" title="Education"></a>Education</h3><ul>
-<li>2011/07 ~ 2015/07 銘傳大學 生物科技學系<!-- more -->
-</li>
-</ul>
-
-</article>
+<!-- Custom -->
 
 
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     
 
     
@@ -332,7 +383,11 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
 
 
 
