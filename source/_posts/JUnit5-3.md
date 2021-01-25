@@ -10,7 +10,7 @@ index_img: /img/JUnit/JUnit5.png
 
 ## 斷言(Assertions)
 斷言簡單來說就是驗證執行該程式是否為預期的效果，若是有錯誤則會fail；    
-在JUnit4中斷言套件需導入org.assertj，而在JUnit5則是直接內建於org.junit.jupiter.api。
+在JUnit5除了內建於org.junit.jupiter.api之外官方也鼓勵開發者使用AssertJ，Hamcrest，Truth等第三方斷言庫。
 <!-- more -->
 
 ## Assertions基本原則
