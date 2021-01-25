@@ -57,11 +57,11 @@ code:
       # 在鏈接中挑選 style 填入
       # Select a style in the link
       # See: https://highlightjs.org/static/demo/
-      style: "Github Gist"
+      style: "Stackoverflow Dark"
 
       # 是否根據 style 改變代碼背景色（如果 style 是深色背景別忘了開啟此項）
       # If true, the code background will change color based on the style (If style has a dark background, don't forget to true)
-      bg_color: false
+      bg_color: true
 
     prismjs:
       # 在下方鏈接頁面右側的圓形按鈕挑選 style 填入，也可以直接填入 css 鏈接
