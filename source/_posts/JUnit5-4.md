@@ -82,3 +82,7 @@ public class AssumptionsTest {
 ## 結論
 Assumptions主要是應用在設置前置條件的情況下，當前置條件不允許時，會直接中止這段測試程式。
 Assumptions與Assertions(斷言)最大的不同在於Assumptions時失敗是測試直接中止，而Assertions時失敗是測試結果會跑出該項失敗。
+## 參考資料
+[junit5官方網站](https://junit.org/junit5/docs/current/user-guide/#writing-tests "junit5")<br/>
+[JUnit5教程-简介](https://tonydeng.github.io/2017/10/09/junit-5-tutorial-introduction/ "JUnit5-1")<br/>
+[JUnit 5 Assumptions Examples](https://rumenz.com/java-topic/junit5/junit-5-assumptions-examples/index.html "JUnit5–Assumptions")<br/>

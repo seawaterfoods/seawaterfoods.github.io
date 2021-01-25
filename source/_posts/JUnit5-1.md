@@ -87,4 +87,4 @@ public class FirstTest {
 Run可查看所有結果。
 
 ## 參考資料
-[第一天 JUnit入門](https://ithelp.ithome.com.tw/articles/10192367, "JUnit4-1")<br/>
+[第一天 JUnit入門](https://ithelp.ithome.com.tw/articles/10192367 "JUnit4-1")<br/>

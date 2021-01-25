@@ -369,6 +369,6 @@ public class AssertionsTest {
 - **可以編輯斷言fail message!**    
 基本上在編輯@Test時，可以在斷言後自定義失敗訊息，像是assertEquals("expected", "actual","Fail")之類的，可以在最後的參數項自訂失敗訊息。
 ## 參考資料
-[第三天 AssertJ入門與用3A原則寫測試案例](https://ithelp.ithome.com.tw/articles/10193175, "JUnit4-3-1")<br/>
-[第四天 硬斷言、軟斷言、一個測試案例只測一件事](https://ithelp.ithome.com.tw/articles/10193404, "JUnit4-3-2")<br/>
-[Class Assertions](https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html, "JUnit4-3-3")<br/>
+[第三天 AssertJ入門與用3A原則寫測試案例](https://ithelp.ithome.com.tw/articles/10193175 "JUnit4-3-1")<br/>
+[第四天 硬斷言、軟斷言、一個測試案例只測一件事](https://ithelp.ithome.com.tw/articles/10193404 "JUnit4-3-2")<br/>
+[Class Assertions](https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html "JUnit4-3-3")<br/>
