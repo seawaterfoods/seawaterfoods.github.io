@@ -9,7 +9,7 @@ index_img: /img/JUnit/JUnit5.png
 ## 用於各種測試的Annotations
 JUnit5中除了最基本的@Test可以執行測試操作，還有其他Annotation可以使用，像是@ParameterizedTest(參數化測試)或是@RepeatedTest(重複測試)...等等，在下面會伴隨著範例去了解使用方法。
 <!-- more -->
-在下面同時列出JUnit5與JUnit4的Annotations:
+在下面列出測試的Annotations:
 
 註解|描述
 ------|-------
@@ -29,8 +29,7 @@ import org.junit.jupiter.params.provider.*;
 public class TestAnnotationsTest {
     @Disabled
     @Test
-    void DisabledCase()
-    {
+    void DisabledCase(){
         System.out.println("You should not see the test");
     }
 
