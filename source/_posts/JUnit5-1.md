@@ -18,6 +18,7 @@ index_img: /img/JUnit/JUnit5.png
 >+ JDK版本：1.8
 >+ IDE：Intellij IDEA 2020.3.2
 >+ maven：3.6.2    
+>+ rg.junit.jupiter:5.7.0
 
 ![](/seawaterfoods/img/JUnit/FolderConfiguration.png)    
 <br />
@@ -28,13 +29,7 @@ index_img: /img/JUnit/JUnit5.png
     <!-- ... -->
     <dependency>
         <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>5.7.0</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
+        <artifactId>junit-jupiter</artifactId>
         <version>5.7.0</version>
         <scope>test</scope>
     </dependency>
@@ -42,7 +37,6 @@ index_img: /img/JUnit/JUnit5.png
 </dependencies>
 <!-- ... -->
 ```
-
 ## 建立測試範例
 1. 建立測試類別
    一般而言測試檔案會建立於專案的路徑src/test/java中分門別類整理好，那我們先直接建立一個測試類別：
