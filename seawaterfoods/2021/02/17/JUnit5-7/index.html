@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/seawaterfoods/img/FlatUiCup.svg">
+  <link rel="icon" type="image/png" href="/seawaterfoods/img/FlatUiCup.svg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式學習日誌">
+  <meta name="author" content="Joe Wu">
+  <meta name="keywords" content="blog">
+  <title>JUnit5學習(七)-@Tag與@DisplayName - SeaWaterFoods</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/seawaterfoods/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/seawaterfoods/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"seawaterfoods.github.io","root":"/seawaterfoods/","version":"1.8.7","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/seawaterfoods/js/utils.js" ></script>
+  <script  src="/seawaterfoods/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/seawaterfoods/">&nbsp;<strong>SeaWaterFoods</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                歸檔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/seawaterfoods/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JUnit5學習(七)-@Tag與@DisplayName">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-17 15:40" pubdate>
+        2021年2月17日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      717 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       分鐘
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JUnit5學習(七)-@Tag與@DisplayName</h1>
+            
+            <div class="markdown-body">
+              <p><img src="/seawaterfoods/img/JUnit/Tags.png" srcset="/seawaterfoods/img/loading.gif"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可以通過@Tag註釋來標記測試類和方法。 這些標籤以後可以用來過濾測試執行。</p>
+<a id="more"></a>
+<p>Tag語法規則:<br>Tag不能為null或為空。<br>一個trimmed tag不能包含空格。<br>一個trimmed tag不得包含ISO控制字符。<br>一個trimmed tag不得包含以下任何保留字符。</p>
+<blockquote>
+<p>,：逗號<br>(：左括號<br>)：右括號<br>&amp;：連字號<br>|：豎線<br>!：感嘆號</p>
+</blockquote>
+<ol>
+<li>可以在測試class或測試method(或兩者同時)使用@Tag。</li>
+<li>也可以在單一測試method中應用多個tag。</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>註解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Tag</td>
+<td>可用於從測試計劃中過濾測試用例。它可以幫助針對不同的環境，不同的用例或任何特定要求創建多個不同的測試計劃。您可以通過僅在測試計劃中包括那些標記的測試或通過從測試計劃中排除其他測試來執行測試集。</td>
+</tr>
+<tr>
+<td>@Tags</td>
+<td>可用於添加多個@Tag在其中。</td>
+</tr>
+<tr>
+<td>@DisplayName</td>
+<td>用於為測試類或測試方法提供任何自定義顯示名稱。</td>
+</tr>
+</tbody></table>
+<h3 id="Tag表達式"><a href="#Tag表達式" class="headerlink" title="Tag表達式"></a>Tag表達式</h3><p>在以Tag來篩選時可以編輯複雜的篩選邏輯:</p>
+<table>
+<thead>
+<tr>
+<th align="center">運算子</th>
+<th align="center">描述</th>
+<th align="center">舉例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">&amp;</td>
+<td align="center">和</td>
+<td align="center">important &amp; easy</td>
+</tr>
+<tr>
+<td align="center">!</td>
+<td align="center">非</td>
+<td align="center">important ! easy</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="center">或</td>
+<td align="center">important | easy</td>
+</tr>
+</tbody></table>
+<h2 id="實際範例"><a href="#實際範例" class="headerlink" title="實際範例"></a>實際範例</h2><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//可以將Tag放置class上</span><br><span class="hljs-meta">@Tag(&quot;first&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TagFirstTest</span> </span>&#123;<br>    Logger log = Logger.getLogger(TagFirstTest.class.getName());<br><br><span class="hljs-comment">//設置多個Tag時可以包在Tags中</span><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-meta">@Tags(&#123;@Tag(&quot;easy&quot;),@Tag(&quot;important&quot;)&#125;)</span><br>    <span class="hljs-meta">@DisplayName(&quot;first-1&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">first1Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;first1Test&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-meta">@DisplayName(&quot;first-2&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">first2Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;first2Test&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-meta">@Tag(&quot;hard&quot;)</span><br>    <span class="hljs-meta">@DisplayName(&quot;first-3&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">first3Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;first3Test&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br>&#125;<br><br><span class="hljs-meta">@Tag(&quot;second&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TagSecondTest</span> </span>&#123;<br>    Logger log = Logger.getLogger(TagSecondTest.class.getName());<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-meta">@DisplayName(&quot;second-1&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">second1Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;second1Test&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-meta">@Tag(&quot;easy&quot;)</span><br>    <span class="hljs-meta">@DisplayName(&quot;second-2&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">second2Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;second2Test&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br><br><span class="hljs-comment">//設置多個Tag時除了可以包在Tags中之外，也可以將@Tag直接設置</span><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-meta">@Tag(&quot;hard&quot;)</span><br>    <span class="hljs-meta">@Tag(&quot;important&quot;)</span><br>    <span class="hljs-meta">@DisplayName(&quot;second-3&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">second3Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;second3Test&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">//當然Tags也可以直接設置在class上</span><br><span class="hljs-meta">@Tags(&#123;@Tag(&quot;easy&quot;),@Tag(&quot;hard&quot;)&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TagThirdTest</span> </span>&#123;<br>    Logger log = Logger.getLogger(TagThirdTest.class.getName());<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-meta">@Tag(&quot;important&quot;)</span><br>    <span class="hljs-meta">@DisplayName(&quot;third-1&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">third1Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;third1Test&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-meta">@Tag(&quot;production&quot;)</span><br>    <span class="hljs-meta">@DisplayName(&quot;third-2&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">third2Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;third2Test&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+<h2 id="IntelliJ-2020-3-2-自訂Tag測試執行"><a href="#IntelliJ-2020-3-2-自訂Tag測試執行" class="headerlink" title="IntelliJ(2020.3.2)自訂Tag測試執行"></a>IntelliJ(2020.3.2)自訂Tag測試執行</h2><ol>
+<li><p>先Edit Configurations編輯設置。<br><img src="/seawaterfoods/img/JUnit/TagTestSetStep1.png" srcset="/seawaterfoods/img/loading.gif"></p>
+</li>
+<li><p>然後建立新的JUnit配置。<br><img src="/seawaterfoods/img/JUnit/TagTestSetStep2.png" srcset="/seawaterfoods/img/loading.gif"></p>
+</li>
+<li><p>最後選擇設置測試類型為Tags，並且在表達式中填寫過濾規則。<br><img src="/seawaterfoods/img/JUnit/TagTestSetStep3.png" srcset="/seawaterfoods/img/loading.gif"></p>
+</li>
+</ol>
+<h3 id="執行結果"><a href="#執行結果" class="headerlink" title="執行結果"></a>執行結果</h3><p>所有”easy”的Tag都會執行，如圖:<br><img src="/seawaterfoods/img/JUnit/TagTest.png" srcset="/seawaterfoods/img/loading.gif"></p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://rumenz.com/java-topic/junit5/expected-exception-example/index.html" title="junit5">junit5官方網站</a><br/><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/boling_cavalry/article/details/108914091" title="Tag &amp; DisplayName">JUnit5学习之五：标签(Tag)和自定义注解</a><br/></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/categories/JUnit5/">JUnit5</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/JUnit5/">JUnit5</a>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2021/02/03/JUnit5-6/">
+                        <span class="hidden-mobile">JUnit5入門(六)-按環境條件執行</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵詞</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <span>Copyright © 2020-2021 SeaWaterFoods All rights reserved. </span> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span>主題：</span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/seawaterfoods/js/debouncer.js" ></script>
+<script  src="/seawaterfoods/js/events.js" ></script>
+<script  src="/seawaterfoods/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/seawaterfoods/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/seawaterfoods/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/seawaterfoods/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/seawaterfoods/js/boot.js" ></script>
+
+
+
+</body>
+</html>
