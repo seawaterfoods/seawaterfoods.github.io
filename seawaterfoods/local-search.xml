@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>JUnit5學習(八)-Composed Annotations</title>
+    <link href="/seawaterfoods/2021/03/04/JUnit5-8/"/>
+    <url>/seawaterfoods/2021/03/04/JUnit5-8/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/seawaterfoods/img/JUnit/CustomizeAnnotation.jpg"></p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>JUnit5也是支持自定義註釋，可以創建自定義組成的註釋命名@Easy然後用來替代@Tag(“easy”)，甚至可以進一步採取自定義的@EasyTest，可以用來同時替代@Tag(“easy”)和@Test。</p><a id="more"></a><h2 id="實際範例"><a href="#實際範例" class="headerlink" title="實際範例"></a>實際範例</h2><p>自定義註解</p><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.lang.annotation.*;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.*;<br><br><span class="hljs-meta">@Target(&#123; ElementType.TYPE, ElementType.METHOD &#125;)</span><br><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="hljs-meta">@Tag(&quot;hard&quot;)</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> HardTest &#123;<br>&#125;<br><br><span class="hljs-meta">@Target(&#123; ElementType.TYPE, ElementType.METHOD &#125;)</span><br><span class="hljs-meta">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="hljs-meta">@Tag(&quot;easy&quot;)</span><br><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-meta">@interface</span> EasyTest &#123;<br>&#125;<br></code></pre></div></td></tr></table></figure><p>實際應用</p><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> customizeAnnotation.EasyTest;<br><span class="hljs-keyword">import</span> customizeAnnotation.HardTest;<br><span class="hljs-keyword">import</span> org.junit.jupiter.api.*;<br><br><span class="hljs-keyword">import</span> java.util.logging.Logger;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CustomizeAnnotationTest</span> </span>&#123;<br>    Logger log = Logger.getLogger(CustomizeAnnotationTest.class.getName());<br><br>    <span class="hljs-meta">@HardTest</span><br>    <span class="hljs-meta">@DisplayName(&quot;hard-1&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">first1Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;hardTest&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br>    <span class="hljs-meta">@EasyTest</span><br>    <span class="hljs-meta">@DisplayName(&quot;easy-1&quot;)</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">second1Test</span><span class="hljs-params">()</span> </span>&#123;<br>        log.info(<span class="hljs-string">&quot;easyTest&quot;</span>);<br>        Assertions.assertEquals(<span class="hljs-number">2</span>, Math.addExact(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>));<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure><h3 id="執行結果"><a href="#執行結果" class="headerlink" title="執行結果"></a>執行結果</h3><p>如圖:<br><img src="/seawaterfoods/img/JUnit/CustomizeAnnotationTest.png"></p><h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a href="https://rumenz.com/java-topic/junit5/expected-exception-example/index.html" title="junit5">junit5官方網站</a><br/><br><a href="https://blog.csdn.net/boling_cavalry/article/details/108914091" title="Tag &amp; DisplayName">JUnit5学习之五：标签(Tag)和自定义注解</a><br/></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>JUnit5</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>JUnit5</tag>
+      
+      <tag>Java</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JUnit5學習(七)-@Tag與@DisplayName</title>
     <link href="/seawaterfoods/2021/02/17/JUnit5-7/"/>
     <url>/seawaterfoods/2021/02/17/JUnit5-7/</url>
