@@ -2,7 +2,7 @@ package com.joe.leetcodetest;
 
 import com.joe.leetcodetest.entry.ListNode;
 
-public class 2_AddTwoNumbers{
+public class AddTwoNumbers{
     public static ListNode addTwoNumbers(ListNode l1,ListNode l2){
         ListNode output=new ListNode(0);
         output.val=0;
