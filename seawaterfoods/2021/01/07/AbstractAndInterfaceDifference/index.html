@@ -59,7 +59,7 @@
   </script>
   <script  src="/seawaterfoods/js/utils.js" ></script>
   <script  src="/seawaterfoods/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -229,7 +229,7 @@
             <div class="markdown-body">
               <p><img src="/seawaterfoods/img/interface-vs-abstract-class-java.jpg" srcset="/seawaterfoods/img/loading.gif"></p>
 <p>在初學java時常搞混抽象類別(Abstract Class)跟介面(Interface)，在這以簡易表格呈現兩者之間的區別。</p>
-<a id="more"></a>
+<span id="more"></span>
 <h3 id="Abstract-Class-vs-Interface"><a href="#Abstract-Class-vs-Interface" class="headerlink" title="Abstract Class vs Interface"></a>Abstract Class vs Interface</h3><table>
 <thead>
 <tr>
@@ -278,6 +278,7 @@
 <li>Abstract Class</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Role</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fight</span><span class="hljs-params">()</span></span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
 <figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Magician</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Role</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fight</span><span class="hljs-params">()</span> </span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;魔法攻擊&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <ol start="2">
 <li>Interface<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Rider</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ride</span><span class="hljs-params">()</span></span>;  <br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Swimmer</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swim</span><span class="hljs-params">()</span></span>;  <span class="hljs-comment">// 預設就是public abstract</span><br>&#125;<br></code></pre></div></td></tr></table></figure>
@@ -302,9 +303,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
-                    
                       <a class="hover-with-bg" href="/seawaterfoods/tags/%E5%9F%BA%E7%A4%8E/">基礎</a>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
                     
                   </div>
                 

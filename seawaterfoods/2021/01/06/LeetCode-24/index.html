@@ -59,7 +59,7 @@
   </script>
   <script  src="/seawaterfoods/js/utils.js" ></script>
   <script  src="/seawaterfoods/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -229,9 +229,10 @@
             <div class="markdown-body">
               <p><img src="/seawaterfoods/img/LeetCode/24.jpg" srcset="/seawaterfoods/img/loading.gif"></p>
 <h3 id="題目-24-Swap-Nodes-in-Pairs"><a href="#題目-24-Swap-Nodes-in-Pairs" class="headerlink" title="題目 24: Swap Nodes in Pairs"></a>題目 24: Swap Nodes in Pairs</h3><p>給定一個 linked list，每隔兩個相鄰node交換一次並返回其linked list。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">swapPairs</span><span class="hljs-params">(ListNode head)</span> </span>&#123;<br>        ListNode body = head;<br>        <span class="hljs-keyword">while</span> (body != <span class="hljs-keyword">null</span> &amp;&amp; body.next != <span class="hljs-keyword">null</span>) &#123;<br>            <span class="hljs-keyword">int</span> temp = body.val;<br>            body.val = body.next.val;<br>            body.next.val = temp;<br>            body = body.next.next;<br>        &#125;<br>        <span class="hljs-keyword">return</span> head;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
             </div>
             <hr>
             <div>

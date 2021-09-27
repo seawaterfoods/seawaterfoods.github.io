@@ -59,7 +59,7 @@
   </script>
   <script  src="/seawaterfoods/js/utils.js" ></script>
   <script  src="/seawaterfoods/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -229,7 +229,7 @@
             <div class="markdown-body">
               <p><img src="/seawaterfoods/img/LeetCode/11.jpg" srcset="/seawaterfoods/img/loading.gif"></p>
 <h3 id="題目-11-Container-With-Most-Water"><a href="#題目-11-Container-With-Most-Water" class="headerlink" title="題目 11: Container With Most Water"></a>題目 11: Container With Most Water</h3><p>給定n個非負整數a1, a2, …, an，其中每個代表坐標(i, ai)上的一個點。 繪製n條垂直線，使線i的兩個端點位於 (i, ai) 和 (i, 0)。 <br/><br>找兩條線，它們與x軸一起形成一個容器，以便該容器包含最多的水。</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> ans=<span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-comment">//取最左邊的線與最右邊的線。</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> left =<span class="hljs-number">0</span>,right = height.length-<span class="hljs-number">1</span>;left&lt;right;)&#123;<br>            <span class="hljs-keyword">int</span> area = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">int</span> width = right-left;<br>            <br>            <span class="hljs-comment">//左右邊線相互比較後，以較小邊為高再與寬相乘得面積，之後將較小邊往對邊前進一位。</span><br>            <span class="hljs-keyword">if</span>(height[left]&gt;height[right])&#123;<br>                area = width*height[right];<br>                right--;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                area = width*height[left];<br>                left++;<br>            &#125;<br>            <span class="hljs-keyword">if</span>(ans&lt;area)<br>                ans=area;<br>           &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p><img src="/seawaterfoods/img/LeetCode/11_ContainerWithMostWater.png" srcset="/seawaterfoods/img/loading.gif"></p>

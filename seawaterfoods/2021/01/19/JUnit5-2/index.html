@@ -59,7 +59,7 @@
   </script>
   <script  src="/seawaterfoods/js/utils.js" ></script>
   <script  src="/seawaterfoods/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -229,7 +229,7 @@
             <div class="markdown-body">
               <p><img src="/seawaterfoods/img/JUnit/JUnit5.png" srcset="/seawaterfoods/img/loading.gif"></p>
 <h2 id="測試順序的Annotations"><a href="#測試順序的Annotations" class="headerlink" title="測試順序的Annotations"></a>測試順序的Annotations</h2><p>在JUnit中執行 @Test 時可以配置測試類別執行前、測試方法執行前、測試方法執行後以及測試類別執行後等等，資源事先配置與事後釋放之類用途的方法。</p>
-<a id="more"></a>
+<span id="more"></span>
 <p>在下面同時列出JUnit5與JUnit4的Annotations:    </p>
 <table>
 <thead>
@@ -262,6 +262,7 @@
 </tbody></table>
 <h2 id="實際測試"><a href="#實際測試" class="headerlink" title="實際測試"></a>實際測試</h2><p>配置測試類別及方法，並實際測試如下:</p>
 <figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.junit.jupiter.api.*;<br><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SequenceTest</span> </span>&#123;<br>    <br><span class="hljs-comment">//    BeforeAll及AfterAll皆為static!</span><br>    <span class="hljs-meta">@BeforeAll</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beforeAll</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;Sequence test beforeAll.&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@BeforeEach</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beforeEach</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;-------------------------&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;Sequence test beforeEach.&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@AfterEach</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterEach</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;Sequence test afterEach.&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;------------------------&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@AfterAll</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">afterAll</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;Sequence test afterAll.&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">case1</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;Case1.&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">case2</span><span class="hljs-params">()</span></span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;Case2.&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
 <p>實際執行結果如下:<br><img src="/seawaterfoods/img/JUnit/SequenceTest.png" srcset="/seawaterfoods/img/loading.gif"></p>
 <h2 id="時序Annotation流程圖"><a href="#時序Annotation流程圖" class="headerlink" title="時序Annotation流程圖"></a>時序Annotation流程圖</h2><p>執行的時間順序可以參考下圖</p>
 <table>
@@ -294,9 +295,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/seawaterfoods/tags/JUnit5/">JUnit5</a>
-                    
                       <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/JUnit5/">JUnit5</a>
                     
                   </div>
                 

@@ -87,6 +87,21 @@ npm install hexo-cli -g             # 安裝Hexo Command Line Interface 命令�
 npm install                         # 安裝相關套件
 ```
 PS: Node.js跟Git別忘了安裝。
+
+當需要新增blog時只需要以下步驟
+```shell
+hexo clean                          # 1.清除舊有渲染過的blog
+hexo g                              # 2.渲染hexo 當然也是可以下hexo generate
+hexo server                         # 3.其實做到2就差不多了，但要在本地看查看還是要下該指令
+```
+預設位置為 http://localhost:4000
+
+### 新增貼文
+```shell
+hexo new post 'title'               # 會直接在目錄底下的[XXX.github.io/source/_posts/]folder新增'title.md'的檔案。
+```
+然後就是單純Markdown語法。
+
 ### 結論
 <p>
 Hexo內建的發布功能只會將靜態網頁資料夾(public)上傳到github上，但為了在不同電腦中都可以上傳Blog所以稍微研究一下(汗)；<br/>
@@ -94,7 +109,7 @@ Hexo內建的發布功能只會將靜態網頁資料夾(public)上傳到github�
 </p>
 
 ### 參考資料
->[NodeJS官方網站](https://nodejs.org/en/, "NodeJS")<br/>
-[Hexo+GitHub，新手也可以快速建立部落格](https://blackmaple.me/hexo-tutorial/, "blackmaple")<br/>
-[Markdown文件(.md寫法)](https://markdown.tw/#autoescape, "Markdown")<br/>
-[hexo系列-00 hexo簡介＆環境安裝](https://augustushsu.github.io/2019/12/09/hexo-00/, "augustushsu")
+>[NodeJS官方網站](https://nodejs.org/en/ "NodeJS")<br/>
+[Hexo+GitHub，新手也可以快速建立部落格](https://blackmaple.me/hexo-tutorial/ "blackmaple")<br/>
+[Markdown文件(.md寫法)](https://markdown.tw/#autoescape "Markdown")<br/>
+[hexo系列-00 hexo簡介＆環境安裝](https://augustushsu.github.io/2019/12/09/hexo-00/ "augustushsu")
