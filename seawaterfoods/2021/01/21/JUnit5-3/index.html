@@ -1,0 +1,547 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/seawaterfoods/img/FlatUiCup.svg">
+  <link rel="icon" type="image/png" href="/seawaterfoods/img/FlatUiCup.svg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式學習日誌">
+  <meta name="author" content="Joe Wu">
+  <meta name="keywords" content="blog">
+  <title>JUnit5入門(三)-斷言 - SeaWaterFoods</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/seawaterfoods/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/seawaterfoods/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"seawaterfoods.github.io","root":"/seawaterfoods/","version":"1.8.7","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/seawaterfoods/js/utils.js" ></script>
+  <script  src="/seawaterfoods/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/seawaterfoods/">&nbsp;<strong>SeaWaterFoods</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                歸檔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/seawaterfoods/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JUnit5入門(三)-斷言">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-01-21 13:39" pubdate>
+        2021年1月21日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38
+       分鐘
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JUnit5入門(三)-斷言</h1>
+            
+            <div class="markdown-body">
+              <p><img src="/seawaterfoods/img/JUnit/AssertionsTest.jpg" srcset="/seawaterfoods/img/loading.gif"></p>
+<h2 id="斷言-Assertions"><a href="#斷言-Assertions" class="headerlink" title="斷言(Assertions)"></a>斷言(Assertions)</h2><p>斷言簡單來說就是驗證執行該程式是否為預期的效果，若是有錯誤則會fail；<br>在JUnit5除了內建於org.junit.jupiter.api之外官方也鼓勵開發者使用AssertJ，Hamcrest，Truth等第三方斷言庫。</p>
+<span id="more"></span>
+
+<h2 id="Assertions基本原則"><a href="#Assertions基本原則" class="headerlink" title="Assertions基本原則"></a>Assertions基本原則</h2><p>在撰寫單元測試的程式碼時，有個3A原則全名為：Arrange Act Assert 這三個步驟是寫單元測試的 pattern，來輔助設計測試程式，可以讓測試程式更好懂。</p>
+<blockquote>
+<p><strong>3A原則(Arrange、Act、Assert)</strong></p>
+<p><strong>1. Arrange</strong>: 初始化目標物件、相依物件、方法參數、預期結果(excepted)<br><strong>2. Act</strong>: 調用目標物件及欲測試的方法<br><strong>3. Assert</strong>: 驗證結果(actual)是否符合預期    </p>
+</blockquote>
+<p><img src="/seawaterfoods/img/JUnit/A.jpg" srcset="/seawaterfoods/img/loading.gif"></p>
+<h3 id="實踐3A原則"><a href="#實踐3A原則" class="headerlink" title="實踐3A原則"></a>實踐3A原則</h3><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreeATest</span> &#123;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">ThreeACase</span><span class="hljs-params">()</span> &#123;<br>		<span class="hljs-comment">// 1. Arrange 先初始化</span><br>        <span class="hljs-type">AssertionCalculator</span> <span class="hljs-variable">calculator</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AssertionCalculator</span>();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">excepted</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;<br>		<br>        <span class="hljs-comment">// 2. Act 調用方法</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">actual</span> <span class="hljs-operator">=</span> calculator.add(number1, number2);<br><br>        <span class="hljs-comment">// 3. Assert 驗證結果</span><br>        Assertions.assertEquals(actual, excepted, <span class="hljs-string">&quot;calculator.add test failed: &quot;</span>+num1+<span class="hljs-string">&quot;+&quot;</span>+num2+<span class="hljs-string">&quot;=&quot;</span>+actual+<span class="hljs-string">&quot; ,excepted: &quot;</span>+excepted);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+<h2 id="Assertions基本方法"><a href="#Assertions基本方法" class="headerlink" title="Assertions基本方法"></a>Assertions基本方法</h2><ol>
+<li>assertEquals() &amp; assertNotEquals() : 斷言物件(參數)是否與預期結果。    </li>
+<li>assertTrue() &amp; assertFalse() : 斷言該boolean是否為預期結果。    </li>
+<li>assertNull() &amp; assertNotNull() : 斷言該物件null狀態。    </li>
+<li>assertSame() &amp; assertNotSame() : 斷言物件引用對象是否為預期結果(相同與否，類似判斷參考記憶體是否相同)。    </li>
+<li>assertTimeout() &amp; assertTimeoutPreemptively() : 斷言是否超時。    </li>
+<li>assertThrows() &amp; assertDoesNotThrow() : 斷言拋出錯誤正確與否或斷言沒有拋錯。    </li>
+<li>assertArrayEquals() : 斷言Array中物件與順序是否完全一致。    </li>
+<li>assertIterableEquals : 斷言迭代中物件與順序是否完全一致。    </li>
+<li>assertLinesMatch : 斷言<String>列表是否完全一致。    </li>
+<li>assertAll : 可以多重斷言，使用Java8 Lambda寫法，跟JUnit4的SoftAssert類似。    </li>
+<li>fail : 無論斷言結果如何，都算執行斷言失敗。    </li>
+</ol>
+<h3 id="實踐Assertions基本方法"><a href="#實踐Assertions基本方法" class="headerlink" title="實踐Assertions基本方法"></a>實踐Assertions基本方法</h3><p>先應用上一章所講的@BeforeAll，初始化部分參數。</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AssertionsTest</span> &#123;<br><br>    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[] actualIntArr;<br>    <span class="hljs-keyword">static</span> <span class="hljs-type">int</span>[] expectedIntArr;<br>    <span class="hljs-keyword">static</span> List&lt;String&gt; actualStrList;<br>    <span class="hljs-keyword">static</span> List&lt;String&gt; expectedStrList;<br><br>    <span class="hljs-meta">@BeforeAll</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">()</span> &#123;<br>        actualIntArr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;<br>        expectedIntArr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[]&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;<br><br>        actualStrList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        expectedStrList = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        actualStrList.add(<span class="hljs-string">&quot;1&quot;</span>);<br>        actualStrList.add(<span class="hljs-string">&quot;2&quot;</span>);<br>        actualStrList.add(<span class="hljs-string">&quot;3&quot;</span>);<br>        actualStrList.add(<span class="hljs-string">&quot;4&quot;</span>);<br><br>        expectedStrList.add(<span class="hljs-string">&quot;1&quot;</span>);<br>        expectedStrList.add(<span class="hljs-string">&quot;2&quot;</span>);<br>        expectedStrList.add(<span class="hljs-string">&quot;3&quot;</span>);<br>        expectedStrList.add(<span class="hljs-string">&quot;4&quot;</span>);<br>    &#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="1-assertEquals-amp-assertNotEquals"><a href="#1-assertEquals-amp-assertNotEquals" class="headerlink" title="1. assertEquals() &amp; assertNotEquals()"></a>1. assertEquals() &amp; assertNotEquals()</h3><blockquote>
+<ul>
+<li>assertEquals() : 斷言物件(或基本參數)相同。</li>
+<li>assertNotEquals() : 斷言物件(或基本參數)不同。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">objectComparisonCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void assertEquals(Object expected, Object actual)</span><br><span class="hljs-comment">//        public static void assertEquals(Object expected, Object actual, String message)</span><br><span class="hljs-comment">//        public static void assertEquals(Object expected, Object actual, Supplier&lt;String&lt; messageSupplier)</span><br><span class="hljs-comment">//        public static void assertNotEquals(Object expected, Object actual)</span><br><span class="hljs-comment">//        public static void assertNotEquals(Object expected, Object actual, String message)</span><br><span class="hljs-comment">//        public static void assertNotEquals(Object expected, Object actual, Supplier&lt;String&gt; messageSupplier)</span><br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">expected1</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">expected2</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">actual</span> <span class="hljs-operator">=</span> AssertionCalculator.add(num1, num2);<br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertEquals(expected1, actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) not equal &quot;</span> + expected1);<br>        <br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertNotEquals(expected2, actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) equal &quot;</span> + expected2);<br><br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="2-assertTrue-amp-assertFalse"><a href="#2-assertTrue-amp-assertFalse" class="headerlink" title="2. assertTrue() &amp; assertFalse()"></a>2. assertTrue() &amp; assertFalse()</h3><blockquote>
+<ul>
+<li>assertTrue() : 斷言該boolean為true。</li>
+<li>assertFalse() : 斷言該boolean為false。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">directJudgmentCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void assertTrue(boolean condition)</span><br><span class="hljs-comment">//        public static void assertTrue(boolean condition, String message)</span><br><span class="hljs-comment">//        public static void assertTrue(boolean condition, Supplier&lt;String&gt; messageSupplier)</span><br><span class="hljs-comment">//        public static void assertTrue(BooleanSupplier booleanSupplier)</span><br><span class="hljs-comment">//        public static void assertTrue(BooleanSupplier booleanSupplier, String message)</span><br><span class="hljs-comment">//        public static void assertTrue(BooleanSupplier booleanSupplier, Supplier&lt;String&gt; messageSupplier)</span><br><span class="hljs-comment">//        public static void assertFalse(boolean condition)</span><br><span class="hljs-comment">//        public static void assertFalse(boolean condition, String message)</span><br><span class="hljs-comment">//        public static void assertFalse(boolean condition, Supplier&lt;String&gt; messageSupplier)</span><br><span class="hljs-comment">//        public static void assertFalse(BooleanSupplier booleanSupplier)</span><br><span class="hljs-comment">//        public static void assertFalse(BooleanSupplier booleanSupplier, String message)</span><br><span class="hljs-comment">//        public static void assertFalse(BooleanSupplier booleanSupplier, Supplier&lt;String&gt; messageSupplier)</span><br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">expected1</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">expected2</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">actual</span> <span class="hljs-operator">=</span> AssertionCalculator.add(num1, num2);<br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertTrue(expected1 == actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) == &quot;</span> + expected1 + <span class="hljs-string">&quot;is false&quot;</span>);<br><br>        <span class="hljs-comment">//the following will succeed </span><br>        Assertions.assertFalse(expected2 == actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) == &quot;</span> + expected2 + <span class="hljs-string">&quot;is true&quot;</span>);<br><br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="3-assertNull-amp-assertNotNull"><a href="#3-assertNull-amp-assertNotNull" class="headerlink" title="3. assertNull() &amp; assertNotNull()"></a>3. assertNull() &amp; assertNotNull()</h3><blockquote>
+<ul>
+<li>assertNull() : 斷言該物件為Null。</li>
+<li>assertNotNull() : 斷言該物件不為Null。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">nullJudgmentCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void assertNotNull(Object actual)</span><br><span class="hljs-comment">//        public static void assertNotNull(Object actual, String message)</span><br><span class="hljs-comment">//        public static void assertNotNull(Object actual, Supplier&lt;String&gt; messageSupplier)</span><br><span class="hljs-comment">//        public static void assertEquals(Object actual)</span><br><span class="hljs-comment">//        public static void assertEquals(Object actual, String message)</span><br><span class="hljs-comment">//        public static void assertEquals(Object actual, Supplier&lt;String&gt; messageSupplier)</span><br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">actual</span> <span class="hljs-operator">=</span> AssertionCalculator.add(num1, num2);<br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertNotNull(actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) is null&quot;</span>);<br><br>        <span class="hljs-comment">//the following will succeed</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">nullActual</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        Assertions.assertNull(nullActual, <span class="hljs-string">&quot;nullActual is not null&quot;</span>);<br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="4-assertSameCase-amp-assertNotSame"><a href="#4-assertSameCase-amp-assertNotSame" class="headerlink" title="4. assertSameCase() &amp; assertNotSame()"></a>4. assertSameCase() &amp; assertNotSame()</h3><blockquote>
+<ul>
+<li>assertSame() : 斷言所預期引用對象的和實際引用的完全相同。</li>
+<li>assertNotSame() : 斷言預期引用對象和實際引用不是同一對象。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">assertSameCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void assertNotSame(Object unexpected,　Object actual)</span><br><span class="hljs-comment">//        public static void assertNotSame(Object unexpected,　Object actual, String message)</span><br><span class="hljs-comment">//        public static void assertNotSame(Object unexpected,　Object actual, Supplier&lt;&gt; messageSupplier)</span><br><span class="hljs-comment">//        public static void assertSame(Object expected, Object actual)</span><br><span class="hljs-comment">//        public static void assertSame(Object expected, Object actual, String message)</span><br><span class="hljs-comment">//        public static void assertSameObject expected, (Object actual, Supplier&lt;String&gt; messageSupplier)</span><br><br>        List&lt;String&gt; cloneStrList = actualStrList;<br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertSame(cloneStrList, actualStrList, <span class="hljs-string">&quot;actualStrList &amp; cloneStrList refer to the not same object&quot;</span>);<br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertNotSame(expectedStrList, actualStrList, <span class="hljs-string">&quot;actualStrList &amp; expectedStrList refer to the same object&quot;</span>);<br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="5-assertTimeout-amp-assertTimeoutPreemptively"><a href="#5-assertTimeout-amp-assertTimeoutPreemptively" class="headerlink" title="5. assertTimeout() &amp; assertTimeoutPreemptively()"></a>5. assertTimeout() &amp; assertTimeoutPreemptively()</h3><blockquote>
+<ul>
+<li>assertTimeout() 和 assertTimeoutPreemptively() : 用於測試長時間運行的任務。<br>如果測試用例中的給定任務花費的時間超過指定的持續時間，則測試將失敗。<br>這兩種方法之間唯一的區別在於如果超時，assertTimeoutPreemptively()會搶先中止Executable或ThrowingSupplier。<br>而assertTimeout()，則不會終止Executable或ThrowingSupplier。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">assertTimeoutJudgmentCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void assertTimeout(Duration timeout, Executable executable)</span><br><span class="hljs-comment">//        public static void assertTimeout(Duration timeout, Executable executable, String message)</span><br><span class="hljs-comment">//        public static void assertTimeout(Duration timeout, Executable executable, Supplier&lt;String&gt; messageSupplier)</span><br>        <br>        <span class="hljs-type">int</span> num3;<br>        <span class="hljs-comment">//the following will succeed</span><br>        num3 = Assertions.assertTimeout(Duration.ofMinutes(<span class="hljs-number">1</span>), () -&gt; &#123;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>        &#125;, <span class="hljs-string">&quot;Timeout Duration.ofMinutes(1)&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;num3:&quot;</span>+num3);<br><br>        <span class="hljs-comment">//the following will fail 還是會return，主要用在assertAll上讓他所用到return繼續使用</span><br>        num3 = Assertions.assertTimeout(Duration.ofMillis(<span class="hljs-number">100</span>), () -&gt; &#123;<br>        Thread.sleep(<span class="hljs-number">200</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>        &#125;, <span class="hljs-string">&quot;Timeout Duration.ofMillis(100)&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;num3:&quot;</span>+num3);<br><br>        <span class="hljs-comment">//the following will fail 不會return</span><br>        num3 = Assertions.assertTimeoutPreemptively(Duration.ofMillis(<span class="hljs-number">100</span>), () -&gt; &#123;<br>        Thread.sleep(<span class="hljs-number">200</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;<br>        &#125;, <span class="hljs-string">&quot;Timeout Duration.ofMillis(100)&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;num3:&quot;</span>+num3);<br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="6-assertThrowsCase-amp-assertDoesNotThrow"><a href="#6-assertThrowsCase-amp-assertDoesNotThrow" class="headerlink" title="6. assertThrowsCase() &amp; assertDoesNotThrow()"></a>6. assertThrowsCase() &amp; assertDoesNotThrow()</h3><blockquote>
+<ul>
+<li>assertThrows() : 可以對方法所拋出的Exception做斷言測試，看他是不是拋出正確的Exception，如果引發的Exception與設定的Exception相同，則這一步的斷言成功並且還可以返回一個Exception。</li>
+<li>assertDoesNotThrow() : 斷言方法不會拋出任何Exception，如果有拋Exception則為fail。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">assertThrowsCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static &lt;T extends Throwable&gt; T assertThrows(Class&lt;T&gt; expectedType, Executable executable)</span><br><span class="hljs-comment">//        public static &lt;T extends Throwable&gt; T assertThrows(Class&lt;T&gt; expectedType, Executable executable, String message)</span><br><span class="hljs-comment">//        public static &lt;T extends Throwable&gt; T assertThrows(Class&lt;T&gt; expectedType, Executable executable, Supplier&lt;String&gt; messageSupplier)</span><br>        <br>        <span class="hljs-comment">//the following will succeed</span><br>        <span class="hljs-type">Throwable</span> <span class="hljs-variable">exception</span> <span class="hljs-operator">=</span> Assertions.assertThrows(IllegalArgumentException.class, () -&gt; &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;error message&quot;</span>);<br>        &#125;);<br>    &#125;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">assertDoesNotThrowCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void assertDoesNotThrow(Executable executable)</span><br><span class="hljs-comment">//        public static void assertDoesNotThrow(Executable executable, String message)</span><br><span class="hljs-comment">//        public static void assertDoesNotThrow(Executable executable, Supplier&lt;String&gt; messageSupplier)</span><br><span class="hljs-comment">//        public static &lt;T&gt; T assertDoesNotThrow(ThrowingSupplier&lt;T&gt; supplier)</span><br><span class="hljs-comment">//        public static &lt;T&gt; T assertDoesNotThrow(ThrowingSupplier&lt;T&gt; supplier, String message)</span><br><span class="hljs-comment">//        public static &lt;T&gt; T assertDoesNotThrow(ThrowingSupplier&lt;T&gt; supplier, Supplier&lt;String&gt; messageSupplier)</span><br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertDoesNotThrow(() -&gt; methodMustNotThrow(<span class="hljs-number">2</span>,<span class="hljs-number">2</span>), <span class="hljs-string">&quot;fail with methodMustNotThrow message: Exception&quot;</span>);<br>        <span class="hljs-comment">//the following will fail</span><br>        Assertions.assertDoesNotThrow(() -&gt; &#123;<br>            methodMustNotThrow(<span class="hljs-number">2</span>,<span class="hljs-number">0</span>);<br>        &#125;, <span class="hljs-string">&quot;Fail: must not trow&quot;</span>);<br>    &#125;<br><br><span class="hljs-comment">//    舉例用的方法</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">methodMustNotThrow</span><span class="hljs-params">(<span class="hljs-type">int</span> num1, <span class="hljs-type">int</span> num2)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> num1 / num2;<br>        &#125; <span class="hljs-keyword">catch</span> (ArithmeticException e) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArithmeticException</span>(<span class="hljs-string">&quot;The numB not allowed to &#x27;0&#x27;!!&quot;</span>);<br>        &#125;<br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="7-arrayEqualsCase"><a href="#7-arrayEqualsCase" class="headerlink" title="7. arrayEqualsCase()"></a>7. arrayEqualsCase()</h3><blockquote>
+<ul>
+<li>arrayEqualsCase() : 斷言數組是否與期望數組相同。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">arrayEqualsCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void assertArrayEquals(int[] expected, int[] actual)</span><br><span class="hljs-comment">//        public static void assertArrayEquals(int[] expected, int[] actual, String message)</span><br><span class="hljs-comment">//        public static void assertArrayEquals(int[] expected, int[] actual, Supplier&lt;String&gt; messageSupplier)</span><br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertArrayEquals(expectedIntArr, actualIntArr, <span class="hljs-string">&quot;actualArray not Equals expectedArray.&quot;</span>);<br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="8-assertIterableEquals"><a href="#8-assertIterableEquals" class="headerlink" title="8. assertIterableEquals()"></a>8. assertIterableEquals()</h3><blockquote>
+<ul>
+<li>assertIterableEquals() : 斷言可跌代項(Iterable)與預期完全相等(包括數量與順序)。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">assertIterableEqualsCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void assertIterableEquals(Iterable&lt;?&gt; expected, Iterable&gt; actual)</span><br><span class="hljs-comment">//        public static void assertIterableEquals(Iterable&lt;?&gt; expected, Iterable&gt; actual, String message)</span><br><span class="hljs-comment">//        public static void assertIterableEquals(Iterable&lt;?&gt; expected, Iterable&gt; actual, Supplier&lt;String&gt; messageSupplier)</span><br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertIterableEquals(expectedStrList, actualStrList, <span class="hljs-string">&quot;actualStrList&#x27;s Iterable not equals expectedStrList&#x27;s Iterable.&quot;</span>);<br><br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="9-assertLinesMatch"><a href="#9-assertLinesMatch" class="headerlink" title="9. assertLinesMatch()"></a>9. assertLinesMatch()</h3><blockquote>
+<ul>
+<li>assertLinesMatch() : 斷言預期的String list與實際String list是否匹配。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">assertLinesMatchCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        1.檢查是否expected.equals(actual)如果是，則繼續下一對</span><br><span class="hljs-comment">//        2.否則將expected作為正則表達式來檢查看看，如果應用正則表達式後相等，則繼續下一對</span><br><span class="hljs-comment">//        3.否則，檢查expected行是否為fast-forward，如果適用相應地fast-forward實際行並轉到1。</span><br><br>        <span class="hljs-comment">//the following will succeed</span><br>        Assertions.assertLinesMatch(expectedStrList, actualStrList, <span class="hljs-string">&quot;fail&quot;</span>);<br>    &#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="10-assertAll"><a href="#10-assertAll" class="headerlink" title="10. assertAll()"></a>10. assertAll()</h3><blockquote>
+<ul>
+<li>assertAll() : 多重斷言，無論所有斷言有無fail都會跑完，最後再給出所有斷言結果。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">assertAllCase</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">num1</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">num2</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">expected1</span> <span class="hljs-operator">=</span> <span class="hljs-number">4</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">expected2</span> <span class="hljs-operator">=</span> <span class="hljs-number">3</span>;<br><br>    <span class="hljs-type">int</span> <span class="hljs-variable">actual</span> <span class="hljs-operator">=</span> AssertionCalculator.add(num1, num2);<br><br>    Assertions.assertAll(<br>            <span class="hljs-comment">//the following will succeed</span><br>            () -&gt; Assertions.assertTrue(expected1 == actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) == &quot;</span> + expected1 + <span class="hljs-string">&quot;is false&quot;</span>),<br>    <span class="hljs-comment">//the following will fail</span><br>            () -&gt; Assertions.assertTrue(expected2 == actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) == &quot;</span> + expected2 + <span class="hljs-string">&quot;is false&quot;</span>),<br>    <span class="hljs-comment">//the following will fail</span><br>            () -&gt; Assertions.assertFalse(expected1 == actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) == &quot;</span> + expected1 + <span class="hljs-string">&quot;is true&quot;</span>),<br>    <span class="hljs-comment">//the following will succeed</span><br>            () -&gt; Assertions.assertFalse(expected2 == actual, <span class="hljs-string">&quot;AssertionCalculator.add(&quot;</span> + num1 + <span class="hljs-string">&quot;,&quot;</span> + num2 + <span class="hljs-string">&quot;) == &quot;</span> + expected2 + <span class="hljs-string">&quot;is true&quot;</span>)<br>    );<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="11-fail"><a href="#11-fail" class="headerlink" title="11. fail()"></a>11. fail()</h3><blockquote>
+<ul>
+<li>fail() : 就是直接讓測試失敗。</li>
+</ul>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">failCase</span><span class="hljs-params">()</span> &#123;<br><span class="hljs-comment">//        public static void fail(String message)</span><br><span class="hljs-comment">//        public static void fail(Throwable cause)</span><br><span class="hljs-comment">//        public static void fail(String message, Throwable cause)</span><br><span class="hljs-comment">//        public static void fail(Supplier&lt;String&gt; messageSupplier)</span><br><br>        <span class="hljs-comment">//the following will fail</span><br>        Assertions.fail(<span class="hljs-string">&quot;test failed&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<h3 id="注意事項"><a href="#注意事項" class="headerlink" title="注意事項"></a>注意事項</h3><ul>
+<li><strong>一個測試案例只測一件事!!</strong><br>在編寫Unit Test中時原則上不會在同一Test驗證多件事件，這樣才可以精準的測試出哪個地方有問題，方便辨別哪個方法錯誤，所以除非有特殊需求，不然盡量別使用assertAll()。    </li>
+<li><strong>可以編輯斷言fail message!</strong><br>基本上在編輯@Test時，可以在斷言後自定義失敗訊息，像是assertEquals(“expected”, “actual”,”Fail”)之類的，可以在最後的參數項自訂失敗訊息。<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10193175" title="JUnit4-3-1">第三天 AssertJ入門與用3A原則寫測試案例</a><br/><br><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10193404" title="JUnit4-3-2">第四天 硬斷言、軟斷言、一個測試案例只測一件事</a><br/><br><a target="_blank" rel="noopener" href="https://junit.org/junit5/docs/5.0.1/api/org/junit/jupiter/api/Assertions.html" title="JUnit4-3-3">Class Assertions</a><br/></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/categories/JUnit5/">JUnit5</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/JUnit5/">JUnit5</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2021/01/25/JUnit5-4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JUnit5入門(四)-假設</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2021/01/19/JUnit5-2/">
+                        <span class="hidden-mobile">JUnit5入門(二)-時序Annotations</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵詞</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <span>Copyright © 2020-2021 SeaWaterFoods All rights reserved. </span> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span>主題：</span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/seawaterfoods/js/debouncer.js" ></script>
+<script  src="/seawaterfoods/js/events.js" ></script>
+<script  src="/seawaterfoods/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/seawaterfoods/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/seawaterfoods/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/seawaterfoods/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/seawaterfoods/js/boot.js" ></script>
+
+
+
+</body>
+</html>

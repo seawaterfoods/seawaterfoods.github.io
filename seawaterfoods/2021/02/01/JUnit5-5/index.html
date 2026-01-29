@@ -1,0 +1,479 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/seawaterfoods/img/FlatUiCup.svg">
+  <link rel="icon" type="image/png" href="/seawaterfoods/img/FlatUiCup.svg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式學習日誌">
+  <meta name="author" content="Joe Wu">
+  <meta name="keywords" content="blog">
+  <title>JUnit5入門(五)-測試Annotations - SeaWaterFoods</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/seawaterfoods/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/seawaterfoods/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"seawaterfoods.github.io","root":"/seawaterfoods/","version":"1.8.7","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/seawaterfoods/js/utils.js" ></script>
+  <script  src="/seawaterfoods/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/seawaterfoods/">&nbsp;<strong>SeaWaterFoods</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                歸檔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/seawaterfoods/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="JUnit5入門(五)-測試Annotations">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-02-01 15:17" pubdate>
+        2021年2月1日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      875 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分鐘
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JUnit5入門(五)-測試Annotations</h1>
+            
+            <div class="markdown-body">
+              <p><img src="/seawaterfoods/img/JUnit/TestAnnotations.png" srcset="/seawaterfoods/img/loading.gif"></p>
+<h2 id="用於各種測試的Annotations"><a href="#用於各種測試的Annotations" class="headerlink" title="用於各種測試的Annotations"></a>用於各種測試的Annotations</h2><p>JUnit5中除了最基本的@Test可以執行測試操作，還有其他Annotation可以使用，像是@ParameterizedTest(參數化測試)或是@RepeatedTest(重複測試)…等等，在下面會伴隨著範例去了解使用方法。</p>
+<span id="more"></span>
+
+<p>測試的Annotations:  </p>
+<table>
+<thead>
+<tr>
+<th>註解</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Test</td>
+<td>表示方法是測試方法。</td>
+</tr>
+<tr>
+<td>@Disabled</td>
+<td>禁用該測試或禁用特定某項測試方法，類似於JUnit4的@Ignore。</td>
+</tr>
+<tr>
+<td>@RepeatedTest</td>
+<td>表示方法是重複測試的測試模板。通過@RepeatedTest並指定所需的重複總數，從而提供了將測試重複指定次數的功能。每次重複測試的行為都視同@Test方法的執行。</td>
+</tr>
+<tr>
+<td>@ParameterizedTest</td>
+<td>表示方法是參數化測試。通過@ParameterizedTest並聲明至少一個source，該source將會為每次的調用提供參數，可以使用不同的參數已用了進行多次測試。</td>
+</tr>
+</tbody></table>
+<h2 id="實際範例"><a href="#實際範例" class="headerlink" title="實際範例"></a>實際範例</h2><p>配置測試類別及方法，並實際測試如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.junit.jupiter.api.*;<br><span class="hljs-keyword">import</span> org.junit.jupiter.params.*;<br><span class="hljs-keyword">import</span> org.junit.jupiter.params.provider.*;<br><br><span class="hljs-comment">//@Disabled //如果使用@Disabled的話，這一類別都不會顯示於測試中。</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestAnnotationsTest</span> &#123;<br>    <span class="hljs-meta">@Disabled</span><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">DisabledCase</span><span class="hljs-params">()</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;You should not see the test&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">//	RepeatedTest(重複次數)</span><br>    <span class="hljs-meta">@RepeatedTest(5)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">repeatedTestCase1</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Repeated Test Case1.&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/*	RepeatedTest(value=重複次數, name=&quot;自定義顯示名稱&quot;)</span><br><span class="hljs-comment">     *  &#123;displayName&#125;:設定顯示的名稱, &#123;totalRepetitions&#125;:重複的總數, &#123;currentRepetition&#125;:當前重複的計數</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@DisplayName(&quot;Repeated Test Case2&quot;)</span><br>    <span class="hljs-meta">@RepeatedTest(value = 5, name = &quot;&#123;displayName&#125; - repetition &#123;currentRepetition&#125; of &#123;totalRepetitions&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">repeatedTestCase2</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Repeated Test Case2.&quot;</span>);<br>    &#125;<br><br><br>    <span class="hljs-comment">/*	當輸入@ParameterizedTest時可以用name自訂測試名稱EX:@ParameterizedTest(name=&quot;執行序號 [&#123;index&#125;], String參數 [&#123;0&#125;],int參數 [&#123;1&#125;]&quot;)，</span><br><span class="hljs-comment">     *   之後必須使用以下的數據源註解來導入參數:</span><br><span class="hljs-comment">     *	@NullSource可以調用null當一次輸入參數。</span><br><span class="hljs-comment">     *  @EmptySource可以調用空字串當一次輸入參數。(限定當參數為String)</span><br><span class="hljs-comment">     *	@NullAndEmptySource可以同時調用null跟空字串當來輸入參數。(限定當參數為String)</span><br><span class="hljs-comment">     *	@ValueSource可以直接輸入單一類別參數。EX:strings:String, shorts:short, bytes:byte, ints:int, longs:long, floats:float, doubles:double, chars:char, booleans:boolean, classeses:classes</span><br><span class="hljs-comment">     *	@MethodSource來指定一個方法名後用該方法的回傳來輸入參數，該回傳必須為Steam類型。</span><br><span class="hljs-comment">     *	@EnumSource來指定Enum當輸入參數，必須在方法的輸入參數類型中知道要調用哪個enum。EX:enum名稱為Types則在測試方法中為public void ParameterizedTest(Types type)</span><br><span class="hljs-comment">     *  @CsvSource使用Csv來當輸入參數。EX:@CsvSource(&#123;&quot;apple1, 11&quot;, &quot;banana1, 12&quot;,&quot;&#x27;lemon1, lime1&#x27;, 0x0A&quot;&#125;)</span><br><span class="hljs-comment">     *	@CsvFileSource調用外部csv文件來當輸入參數，並且可以用numLinesToSkip指定跳過的行數。EX:@CsvFileSource(files = &quot;src/test/resources/two-column.csv&quot;, numLinesToSkip = 1)</span><br><span class="hljs-comment">     *	@ArgumentsSource自定義參數來源 @ArgumentsSource(MyArgumentsProvider.class)。</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@ParameterizedTest</span><br>    <span class="hljs-meta">@NullSource</span><br>    <span class="hljs-meta">@EmptySource</span><br>    <span class="hljs-meta">@ValueSource(strings = &#123; &quot;a&quot;, &quot;b&quot;, &quot;c&quot; &#125; )</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">ParameterizedTest</span><span class="hljs-params">(String testString)</span> &#123;<br>        System.out.printf(<span class="hljs-string">&quot;Parameterized Test Basic Case. string : %s&quot;</span> ,testString);<br>        System.out.println();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>實際執行結果如下:<br><img src="/seawaterfoods/img/JUnit/TestAnnotationsTest.png" srcset="/seawaterfoods/img/loading.gif"></p>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>這上面舉例的部分都是當要調用許多重複測試的方法，比較要注意的是 @ValueSource <strong>只能</strong> 輸入單一類別的參數，當想要同時輸入多個不同參數類別的話可以多多使用 @CsvSource 以csv格式的不同欄位來實現測試需求。</p>
+<h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><p><a target="_blank" rel="noopener" href="https://junit.org/junit5/docs/current/user-guide/#writing-tests" title="junit5">junit5官方網站</a><br/><br><a target="_blank" rel="noopener" href="https://rumenz.com/java-topic/junit5/repeated-test-annotation-example/index.html" title="RepeatedTest">@RepeatedTest Annotation Example</a><br/><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/boling_cavalry/article/details/108930987" title="ParameterizedTest Basic">JUnit5学习之六：参数化测试(Parameterized Tests)基础</a><br/><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/boling_cavalry/article/details/108930987" title="ParameterizedTest Advanced">JUnit5学习之七：参数化测试(Parameterized Tests)进阶</a><br/></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/categories/JUnit5/">JUnit5</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/Java/">Java</a>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/JUnit5/">JUnit5</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2021/02/03/JUnit5-6/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JUnit5入門(六)-按環境條件執行</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2021/01/25/JUnit5-4/">
+                        <span class="hidden-mobile">JUnit5入門(四)-假設</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵詞</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <span>Copyright © 2020-2021 SeaWaterFoods All rights reserved. </span> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span>主題：</span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/seawaterfoods/js/debouncer.js" ></script>
+<script  src="/seawaterfoods/js/events.js" ></script>
+<script  src="/seawaterfoods/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/seawaterfoods/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/seawaterfoods/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/seawaterfoods/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/seawaterfoods/js/boot.js" ></script>
+
+
+
+</body>
+</html>

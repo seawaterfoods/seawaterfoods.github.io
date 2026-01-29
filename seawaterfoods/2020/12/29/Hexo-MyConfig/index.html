@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/seawaterfoods/img/FlatUiCup.svg">
+  <link rel="icon" type="image/png" href="/seawaterfoods/img/FlatUiCup.svg">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="程式學習日誌">
+  <meta name="author" content="Joe Wu">
+  <meta name="keywords" content="blog">
+  <title>Hexo+GitHub，快速建立靜態Blog並且帶著到處趴趴走。 - SeaWaterFoods</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/seawaterfoods/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/stackoverflow-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/seawaterfoods/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"seawaterfoods.github.io","root":"/seawaterfoods/","version":"1.8.7","typing":{"enable":true,"typeSpeed":50,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/seawaterfoods/js/utils.js" ></script>
+  <script  src="/seawaterfoods/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/seawaterfoods/">&nbsp;<strong>SeaWaterFoods</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                歸檔
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/seawaterfoods/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/seawaterfoods/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Hexo+GitHub，快速建立靜態Blog並且帶著到處趴趴走。">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-12-29 11:56" pubdate>
+        2020年12月29日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      906 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11
+       分鐘
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Hexo+GitHub，快速建立靜態Blog並且帶著到處趴趴走。</h1>
+            
+            <div class="markdown-body">
+              <p><img src="/seawaterfoods/img/hexo-cover.png" srcset="/seawaterfoods/img/loading.gif"></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><blockquote>
+<p>在剛轉職當工程師時一直想建立Blog來記錄學習的點點滴滴，但老實說對於如何設計畫面實在是沒有美感，而且還有維護更新等等問題，所以乾脆去找了許多可以快速建立Blog方法、框架，最後選擇快速又方便的Hexo+GitHub，<br>但Hexo內建的發布功能僅能單純上傳靜態網頁部分，為了方便在不同電腦更新自己Blog，在這裡分享如何設定與基本安裝方法。</p>
+</blockquote>
+<span id="more"></span>
+<h3 id="安裝與建置"><a href="#安裝與建置" class="headerlink" title="安裝與建置"></a>安裝與建置</h3><blockquote>
+<p>由於Hexo是基於Node.js開發的Blog框架，沒安裝Node.js(Node.js 版本需不低於8.10，建議使用 Node.js 10.0 及以上版本)<br>可以直接去<a target="_blank" rel="noopener" href="https://nodejs.org/en/," title="NodeJS">NodeJS官方網站</a>下載一個LTS的版本就可以了。<br><br/><br><img src="/seawaterfoods/img/nodejs.png" srcset="/seawaterfoods/img/loading.gif"><br><br/><br>當然還需要有安裝<a target="_blank" rel="noopener" href="https://git-scm.com/,%22Git%22">Git</a>。<br>安裝好兩個必要軟體後就可以直接使用NPM來安裝Hexo。</p>
+</blockquote>
+<p><strong>1. 安裝 Hexo</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">npm install hexo-cli -g<br></code></pre></div></td></tr></table></figure>
+<p>如果安裝完成便可以直接輸入指令來查詢Hexo版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hexo version<br></code></pre></div></td></tr></table></figure>
+<p><strong>2. 初始化Blog</strong></p>
+<figure class="highlight autoit"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs autoit">hexo init yourname.github.io        <span class="hljs-meta"># 初始化 blog，由於要使用到GitHub Page，所以建議命名<span class="hljs-string">&#x27;你的githubID&#x27;</span>.github.io</span><br>cd yourname.github.io               <span class="hljs-meta"># 移動到剛創建的 blog 資料夾裡</span><br>npm install                         <span class="hljs-meta"># 安裝相關套件</span><br></code></pre></div></td></tr></table></figure>
+<p><img src="/seawaterfoods/img/hexoinit.png" srcset="/seawaterfoods/img/loading.gif"><br><strong>3. 設定_config.yml</strong></p>
+<p>
+為了可以在不同電腦更新Blog所以不去使用Hexo內建的deploy功能，
+但為了要顯示靜態網頁部分需要額外設定一些參數，使github可以抓到靜態網頁。
+</p>
+
+<p><img src="/seawaterfoods/img/hexo-myconfig.png" srcset="/seawaterfoods/img/loading.gif"></p>
+<p><strong>4. 設置跳轉頁面</strong></p>
+<p>
+在blog資料夾中建立index.html，設置跳轉到首頁的html。<br/>
+也可以順便建立Blog的404頁面。
+</p>
+
+<figure class="highlight html"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;refresh&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;0;url=/yourname/&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></div></td></tr></table></figure>
+<p><img src="/seawaterfoods/img/returnindex.png" srcset="/seawaterfoods/img/loading.gif"><br><strong>5. Hexo Blog上傳GitHub</strong></p>
+<p>
+建立Repositories。
+</p>
+
+<p><img src="/seawaterfoods/img/githubpage.png" srcset="/seawaterfoods/img/loading.gif"><br><br/><br>直接上傳到github。<br><br/><br><strong>PS:需配置好認證祕鑰–保證本地和遠端建立安全連線。</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">git init                                                                #建立數據庫<br>git add *                                                               #把資料夾內所有檔案列為tracked對象<br>git commit -m &#x27;hexo&#x27;                                                    #提交版本<br>git remote add origin git@github.com:yourname/yourname.github.io.git    #設定遠端節點<br>git push -u origin master                                               #把本地端(master)Push到遠端(origin)<br></code></pre></div></td></tr></table></figure>
+<p>或是使用各種GUI界面來管理版本控制內容的軟體來Push到GitHub上。</p>
+<h3 id="在其他電腦更新Hexo-Blog"><a href="#在其他電腦更新Hexo-Blog" class="headerlink" title="在其他電腦更新Hexo Blog"></a>在其他電腦更新Hexo Blog</h3><p>
+在其他電腦下載好自己的Hexo Blog專案後，在專案資料夾直接安裝npm套件即可使用hexo。
+</p>
+
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">npm install hexo-cli -g             # 安裝Hexo Command Line Interface 命令列介面。<br>npm install                         # 安裝相關套件<br></code></pre></div></td></tr></table></figure>
+<p>PS: Node.js跟Git別忘了安裝。</p>
+<p>當需要新增blog時只需要以下步驟</p>
+<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hexo clean                          # 1.清除舊有渲染過的blog<br>hexo g                              # 2.渲染hexo 當然也是可以下hexo generate<br>hexo server                         # 3.其實做到2就差不多了，但要在本地看查看還是要下該指令<br></code></pre></div></td></tr></table></figure>
+<p>預設位置為 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a></p>
+<h3 id="新增貼文"><a href="#新增貼文" class="headerlink" title="新增貼文"></a>新增貼文</h3><figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">hexo new post &#x27;title&#x27;               # 會直接在目錄底下的[XXX.github.io/source/_posts/]folder新增&#x27;title.md&#x27;的檔案。<br></code></pre></div></td></tr></table></figure>
+<p>然後就是單純Markdown語法。</p>
+<h3 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h3><p>
+Hexo內建的發布功能只會將靜態網頁資料夾(public)上傳到github上，但為了在不同電腦中都可以上傳Blog所以稍微研究一下(汗)；<br/>
+其他Hexo操作像是建立新頁面之類的方法，可以參考官方網站及其他Hexo教學文，這裡把URL放在下方參考資料中。
+</p>
+
+<h3 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h3><blockquote>
+<p><a target="_blank" rel="noopener" href="https://nodejs.org/en/" title="NodeJS">NodeJS官方網站</a><br/><br><a target="_blank" rel="noopener" href="https://blackmaple.me/hexo-tutorial/" title="blackmaple">Hexo+GitHub，新手也可以快速建立部落格</a><br/><br><a target="_blank" rel="noopener" href="https://markdown.tw/#autoescape" title="Markdown">Markdown文件(.md寫法)</a><br/><br><a target="_blank" rel="noopener" href="https://augustushsu.github.io/2019/12/09/hexo-00/" title="augustushsu">hexo系列-00 hexo簡介＆環境安裝</a></p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/categories/Hexo/">Hexo</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/seawaterfoods/tags/Hexo/">Hexo</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2021/01/04/LeetCode-2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">2 Add Two Numbers</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/seawaterfoods/2020/12/24/LeetCode-1365/">
+                        <span class="hidden-mobile">1365 How Many Numbers Are Smaller Than the Current Number</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵詞</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <span>Copyright © 2020-2021 SeaWaterFoods All rights reserved. </span> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span>主題：</span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/seawaterfoods/js/debouncer.js" ></script>
+<script  src="/seawaterfoods/js/events.js" ></script>
+<script  src="/seawaterfoods/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/seawaterfoods/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/seawaterfoods/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/seawaterfoods/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/seawaterfoods/js/boot.js" ></script>
+
+
+
+</body>
+</html>
